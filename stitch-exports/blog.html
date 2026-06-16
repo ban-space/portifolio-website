@@ -1,0 +1,341 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ban-Tech - Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-container": "#196fc0",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-secondary-fixed-variant": "#004395",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "text-secondary-light": "#475569",
+                        "bg-light": "#F8FAFC",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#2170e4",
+                        "surface-dim": "#d2d9f4",
+                        "inverse-surface": "#283044",
+                        "bg-dark": "#0B1120",
+                        "surface": "#faf8ff",
+                        "tertiary": "#00569c",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "border-dark": "rgba(255, 255, 255, 0.08)",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#ebf1ff",
+                        "secondary": "#0058be",
+                        "on-surface": "#131b2e",
+                        "surface-dark": "#111827",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#001c39",
+                        "on-error-container": "#93000a",
+                        "primary": "#004ac6",
+                        "text-secondary-dark": "#94A3B8",
+                        "on-background": "#131b2e",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d8e2ff",
+                        "border-light": "#E2E8F0",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container": "#eaedff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "surface-container-high": "#e2e7ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary-container": "#fefcff",
+                        "surface-variant": "#dae2fd",
+                        "on-primary-container": "#eeefff",
+                        "card-light": "#FFFFFF",
+                        "background": "#faf8ff",
+                        "surface-tint": "#0053db",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-highest": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "32px",
+                        "section-padding": "120px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "hero-display": ["Inter"],
+                        "section-heading": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "hero-display-mobile": ["Inter"],
+                        "card-title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "section-heading": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "card-title": ["22px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .bento-hover {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .bento-hover:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Tonal Layering Utilities */
+        .layer-base { background-color: var(--color-bg-light); }
+        .dark .layer-base { background-color: var(--color-bg-dark); }
+        
+        .layer-surface {
+            background-color: var(--color-card-light);
+            border: 1px solid var(--color-border-light);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.04);
+        }
+        .dark .layer-surface {
+            background-color: var(--color-surface-dark);
+            border: 1px solid var(--color-border-dark);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+        }
+
+        .filter-chip-active {
+            background: linear-gradient(135deg, #2563EB, #60A5FA);
+            color: white;
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-on-surface dark:text-surface antialiased min-h-screen flex flex-col font-body-base">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full h-[80px] z-50 bg-background/80 dark:bg-surface-dark/80 backdrop-blur-md border-b border-border-light dark:border-border-dark flex justify-between items-center px-gutter max-w-container-max mx-auto w-full transition-all duration-300" id="navbar">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dataset</span>
+<span class="font-hero-display text-card-title font-bold text-on-surface dark:text-surface-bright">Ban-Tech</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Home</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">About</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Services</a>
+<a class="font-body-base text-body-base font-semibold text-secondary dark:text-secondary-fixed-dim font-bold opacity-80 scale-95 transition-all" href="#">Blog</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Course</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button aria-label="Toggle Theme" class="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface dark:text-surface" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined text-xl">dark_mode</span>
+</button>
+<button class="md:hidden p-2 text-on-surface dark:text-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[120px] pb-section-padding px-gutter w-full max-w-container-max mx-auto">
+<!-- Header Section -->
+<section class="mb-16">
+<div class="flex items-center gap-2 mb-4 text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary dark:text-primary-fixed">Blog</span>
+</div>
+<h1 class="font-section-heading text-section-heading md:font-hero-display md:text-hero-display mb-4">Blog</h1>
+<p class="font-body-base text-body-base text-text-secondary-light dark:text-text-secondary-dark max-w-2xl">
+                Insights, tutorials, and ideas about technology and growth. Explore technical deep dives, career advice, and industry trends.
+            </p>
+</section>
+<!-- Search & Filters -->
+<section class="mb-16 space-y-6">
+<div class="relative max-w-xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-xl border border-border-light dark:border-border-dark bg-white dark:bg-surface-dark focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none transition-all shadow-sm font-body-sm text-body-sm placeholder:text-outline-variant" placeholder="Search articles..." type="text">
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps filter-chip-active shadow-sm transition-all">All</button>
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps bg-white dark:bg-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high transition-all text-on-surface-variant dark:text-outline-variant">C++</button>
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps bg-white dark:bg-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high transition-all text-on-surface-variant dark:text-outline-variant">AI</button>
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps bg-white dark:bg-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high transition-all text-on-surface-variant dark:text-outline-variant">Web Development</button>
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps bg-white dark:bg-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high transition-all text-on-surface-variant dark:text-outline-variant">Career</button>
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps bg-white dark:bg-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high transition-all text-on-surface-variant dark:text-outline-variant">Tips</button>
+<button class="px-4 py-2 rounded-full border border-border-light dark:border-border-dark font-label-caps text-label-caps bg-white dark:bg-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high transition-all text-on-surface-variant dark:text-outline-variant">University</button>
+</div>
+</section>
+<!-- Featured Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
+<!-- Large Featured Card -->
+<article class="md:col-span-8 layer-surface rounded-[24px] overflow-hidden bento-hover group relative flex flex-col h-[480px]">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/90 to-tertiary-container/90 z-10 p-8 flex flex-col justify-end">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full font-label-caps text-label-caps text-white">C++</span>
+<span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full font-label-caps text-label-caps text-white">Beginners</span>
+</div>
+<h2 class="font-section-heading text-section-heading text-white mb-3 group-hover:text-primary-fixed transition-colors">Mastering C++ for Beginners</h2>
+<p class="font-body-base text-body-base text-white/90 mb-6 max-w-xl line-clamp-2">A comprehensive, step-by-step guide to starting your journey in C++ programming. Learn the fundamentals, object-oriented concepts, and memory management.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-white/20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-weight="fill">person</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-white">Biniyam Gebreslassie</p>
+<p class="text-xs text-white/70">May 15, 2024 • 10 min read</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 text-white font-semibold hover:gap-3 transition-all" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Background Image Pattern -->
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+</article>
+<!-- Side Cards Stack -->
+<div class="md:col-span-4 flex flex-col gap-6 h-[480px]">
+<!-- Card 2 -->
+<article class="flex-1 layer-surface rounded-[24px] overflow-hidden bento-hover group flex flex-col p-6 relative">
+<div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">psychology</span>
+</div>
+<div class="mb-4">
+<span class="px-3 py-1 bg-surface-container dark:bg-surface-container-high rounded-full font-label-caps text-label-caps text-primary">AI</span>
+</div>
+<h3 class="font-card-title text-card-title mb-2 group-hover:text-primary transition-colors">The Future of Artificial Intelligence</h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light dark:text-text-secondary-dark line-clamp-2 mb-4">Exploring how AI is transforming industries and what developers need to know to stay ahead in the coming decade.</p>
+<div class="mt-auto flex items-center justify-between">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">May 12, 2024</p>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="flex-1 layer-surface rounded-[24px] overflow-hidden bento-hover group flex flex-col p-6 relative bg-gradient-to-br from-surface to-surface-container">
+<div class="mb-4">
+<span class="px-3 py-1 bg-white dark:bg-surface-dark rounded-full font-label-caps text-label-caps text-tertiary-container shadow-sm">Career</span>
+</div>
+<h3 class="font-card-title text-card-title mb-2 group-hover:text-tertiary-container transition-colors">Career Roadmap for Software Engineers</h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light dark:text-text-secondary-dark line-clamp-2 mb-4">Practical tips and strategies to advance your tech career from junior to senior roles and beyond.</p>
+<div class="mt-auto flex items-center justify-between">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">May 10, 2024</p>
+<span class="material-symbols-outlined text-tertiary-container opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0">arrow_forward</span>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-on-surface dark:bg-surface-container-lowest w-full py-section-padding border-t border-border-dark/10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg px-gutter max-w-container-max mx-auto w-full">
+<!-- Brand Column -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface dark:text-on-surface text-3xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dataset</span>
+<span class="font-hero-display text-card-title font-bold text-surface dark:text-on-surface">Ban-Tech</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant max-w-xs mt-2">
+                    Designing, Building, and Teaching the Future of Technology.
+                </p>
+<div class="flex gap-4 mt-4">
+<a aria-label="GitHub" class="text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">code</span>
+</a>
+<a aria-label="LinkedIn" class="text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">work</span>
+</a>
+<a aria-label="YouTube" class="text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Quick Links -->
+<div class="flex flex-col gap-4">
+<h4 class="font-body-base text-body-base font-semibold text-surface dark:text-on-surface mb-2">Quick Links</h4>
+<nav class="flex flex-col gap-3">
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary w-fit" href="#">Home</a>
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary w-fit" href="#">About</a>
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary w-fit" href="#">Services</a>
+<a class="font-body-sm text-body-sm text-primary-fixed dark:text-primary hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary w-fit font-semibold" href="#">Blog</a>
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary w-fit" href="#">Course</a>
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary w-fit" href="#">Contact</a>
+</nav>
+</div>
+<!-- Contact Info -->
+<div class="flex flex-col gap-4">
+<h4 class="font-body-base text-body-base font-semibold text-surface dark:text-on-surface mb-2">Contact Info</h4>
+<div class="flex flex-col gap-4">
+<a class="flex items-center gap-3 font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors group" href="mailto:banspace21@gmail.com">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">mail</span>
+                        banspace21@gmail.com
+                    </a>
+<a class="flex items-center gap-3 font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors group" href="tel:0927788173">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">call</span>
+                        0927788173
+                    </a>
+<div class="flex items-start gap-3 font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined mt-1">location_on</span>
+                        Addis Ababa, Ethiopia
+                    </div>
+</div>
+</div>
+</div>
+<div class="px-gutter max-w-container-max mx-auto w-full mt-16 pt-8 border-t border-surface-variant/20 dark:border-border-dark/20 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant">
+                © 2024 Ban-Tech. All rights reserved.
+            </p>
+<div class="flex gap-4">
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-sm', 'glass-nav');
+                navbar.classList.remove('bg-background/80', 'dark:bg-surface-dark/80');
+                navbar.classList.add('bg-background/90', 'dark:bg-surface-dark/90');
+            } else {
+                navbar.classList.remove('shadow-sm', 'glass-nav');
+                navbar.classList.remove('bg-background/90', 'dark:bg-surface-dark/90');
+                navbar.classList.add('bg-background/80', 'dark:bg-surface-dark/80');
+            }
+        });
+    </script>
+</body></html>

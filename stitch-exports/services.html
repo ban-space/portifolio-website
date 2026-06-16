@@ -1,0 +1,305 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ban-Tech | Our Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-container": "#196fc0",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-secondary-fixed-variant": "#004395",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "text-secondary-light": "#475569",
+                        "bg-light": "#F8FAFC",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#2170e4",
+                        "surface-dim": "#d2d9f4",
+                        "inverse-surface": "#283044",
+                        "bg-dark": "#0B1120",
+                        "surface": "#faf8ff",
+                        "tertiary": "#00569c",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "border-dark": "rgba(255, 255, 255, 0.08)",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#ebf1ff",
+                        "secondary": "#0058be",
+                        "on-surface": "#131b2e",
+                        "surface-dark": "#111827",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#001c39",
+                        "on-error-container": "#93000a",
+                        "primary": "#004ac6",
+                        "text-secondary-dark": "#94A3B8",
+                        "on-background": "#131b2e",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d8e2ff",
+                        "border-light": "#E2E8F0",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container": "#eaedff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "surface-container-high": "#e2e7ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary-container": "#fefcff",
+                        "surface-variant": "#dae2fd",
+                        "on-primary-container": "#eeefff",
+                        "card-light": "#FFFFFF",
+                        "background": "#faf8ff",
+                        "surface-tint": "#0053db",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-highest": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "32px",
+                        "section-padding": "120px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "hero-display": ["Inter"],
+                        "section-heading": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "hero-display-mobile": ["Inter"],
+                        "card-title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "section-heading": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-base": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "card-title": ["22px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base antialiased min-h-screen flex flex-col pt-[80px]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-[80px] z-50 bg-background/80 backdrop-blur-md border-b border-border-light transition-all duration-300">
+<div class="flex justify-between items-center px-gutter max-w-container-max mx-auto w-full h-full">
+<!-- Brand -->
+<a class="flex items-center gap-2 hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">widgets</span>
+<span class="font-hero-display text-card-title font-bold text-on-surface">Ban-Tech</span>
+</a>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center gap-stack-lg font-body-base text-body-base font-semibold">
+<a class="text-on-surface hover:text-secondary transition-colors duration-300" href="#">Home</a>
+<a class="text-on-surface hover:text-secondary transition-colors duration-300" href="#">About</a>
+<a class="text-secondary font-bold hover:text-secondary transition-colors duration-300 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-secondary after:rounded-full" href="#">Services</a>
+<a class="text-on-surface hover:text-secondary transition-colors duration-300" href="#">Blog</a>
+<a class="text-on-surface hover:text-secondary transition-colors duration-300" href="#">Course</a>
+<a class="text-on-surface hover:text-secondary transition-colors duration-300" href="#">Contact</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-primary hover:bg-surface-container-highest rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden p-2 text-on-surface hover:bg-surface-container-highest rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col w-full">
+<!-- Services Hero Section -->
+<section class="w-full pt-section-padding pb-margin-desktop px-gutter flex flex-col items-center justify-center text-center relative overflow-hidden">
+<!-- Decorative subtle background element -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="max-w-3xl mx-auto relative z-10 flex flex-col gap-stack-md items-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-high border border-border-light">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-wider">Expertise</span>
+</div>
+<h1 class="font-hero-display text-hero-display-mobile md:text-hero-display text-on-surface">Our Services</h1>
+<p class="font-body-base text-body-base text-on-surface-variant max-w-2xl leading-relaxed">
+                    We provide end-to-end digital solutions to help businesses and individuals grow, innovate, and succeed. Our focus is on functional elegance and technical mastery.
+                </p>
+</div>
+</section>
+<!-- Services Grid Section -->
+<section class="w-full pb-section-padding px-gutter">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-lg">
+<!-- Service Card 1 -->
+<div class="group relative h-full rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 cursor-pointer">
+<!-- Glow Effect -->
+<div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 blur-md rounded-2xl transition-opacity duration-500"></div>
+<!-- Card Content -->
+<div class="relative h-full bg-card-light rounded-2xl border border-border-light p-8 flex flex-col gap-stack-md z-10 overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px] text-primary group-hover:text-on-primary transition-colors duration-300">computer</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Web Development</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                                Modern, responsive and high-performance websites and web applications built with the latest enterprise technologies.
+                            </p>
+<div class="mt-4 flex items-center text-primary font-body-sm text-body-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Learn More <span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="group relative h-full rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 cursor-pointer">
+<div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 blur-md rounded-2xl transition-opacity duration-500"></div>
+<div class="relative h-full bg-card-light rounded-2xl border border-border-light p-8 flex flex-col gap-stack-md z-10 overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px] text-primary group-hover:text-on-primary transition-colors duration-300">smartphone</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Mobile Development</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                                Cross-platform mobile apps for Android and iOS with native-like performance and intuitive user flows.
+                            </p>
+<div class="mt-4 flex items-center text-primary font-body-sm text-body-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Learn More <span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="group relative h-full rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 cursor-pointer">
+<div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 blur-md rounded-2xl transition-opacity duration-500"></div>
+<div class="relative h-full bg-card-light rounded-2xl border border-border-light p-8 flex flex-col gap-stack-md z-10 overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px] text-primary group-hover:text-on-primary transition-colors duration-300">design_services</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">UI/UX Design</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                                Beautiful, user-centered designs that enhance user experience, focusing on minimalism, clarity, and intentional whitespace.
+                            </p>
+<div class="mt-4 flex items-center text-primary font-body-sm text-body-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Learn More <span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="group relative h-full rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 cursor-pointer">
+<div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 blur-md rounded-2xl transition-opacity duration-500"></div>
+<div class="relative h-full bg-card-light rounded-2xl border border-border-light p-8 flex flex-col gap-stack-md z-10 overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px] text-primary group-hover:text-on-primary transition-colors duration-300">smart_toy</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">AI Solutions</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                                Smart AI integrations and automation tools to boost operational efficiency, drive growth, and solve complex problems.
+                            </p>
+<div class="mt-4 flex items-center text-primary font-body-sm text-body-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Learn More <span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Card 5 -->
+<div class="group relative h-full rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 cursor-pointer">
+<div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 blur-md rounded-2xl transition-opacity duration-500"></div>
+<div class="relative h-full bg-card-light rounded-2xl border border-border-light p-8 flex flex-col gap-stack-md z-10 overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px] text-primary group-hover:text-on-primary transition-colors duration-300">handshake</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Software Consulting</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                                Expert guidance on technical architecture, system strategy, and digital transformation for scaling businesses.
+                            </p>
+<div class="mt-4 flex items-center text-primary font-body-sm text-body-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Learn More <span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Service Card 6 -->
+<div class="group relative h-full rounded-2xl transition-all duration-500 ease-out hover:-translate-y-2 cursor-pointer">
+<div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-secondary to-primary opacity-0 group-hover:opacity-30 blur-md rounded-2xl transition-opacity duration-500"></div>
+<div class="relative h-full bg-card-light rounded-2xl border border-border-light p-8 flex flex-col gap-stack-md z-10 overflow-hidden shadow-sm group-hover:shadow-xl transition-shadow duration-500">
+<div class="w-14 h-14 rounded-xl bg-surface-container-high flex items-center justify-center mb-2 group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px] text-primary group-hover:text-on-primary transition-colors duration-300">school</span>
+</div>
+<h3 class="font-card-title text-card-title text-on-surface">Programming Mentorship</h3>
+<p class="font-body-base text-body-base text-on-surface-variant flex-grow">
+                                One-on-one technical mentorship to help you master new technologies, build your portfolio, and achieve career goals.
+                            </p>
+<div class="mt-4 flex items-center text-primary font-body-sm text-body-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                Learn More <span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding bg-on-surface">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg px-gutter max-w-container-max mx-auto w-full">
+<!-- Brand & Copyright -->
+<div class="flex flex-col gap-stack-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface text-[28px]" style="font-variation-settings: 'FILL' 1;">widgets</span>
+<span class="font-hero-display text-card-title font-bold text-surface">Ban-Tech</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-variant mt-auto">
+                    © 2024 Ban-Tech. All rights reserved.
+                </p>
+</div>
+<!-- Quick Links -->
+<div class="flex flex-col gap-stack-sm">
+<h4 class="font-body-base text-body-base font-bold text-surface mb-2">Navigation</h4>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary inline-block w-fit" href="#">Home</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary inline-block w-fit" href="#">About</a>
+<a class="font-body-sm text-body-sm text-primary-fixed hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary inline-block w-fit" href="#">Services</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary inline-block w-fit" href="#">Blog</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary inline-block w-fit" href="#">Course</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors focus:ring-2 focus:ring-primary inline-block w-fit" href="#">Contact</a>
+</div>
+<!-- Contact Info -->
+<div class="flex flex-col gap-stack-sm">
+<h4 class="font-body-base text-body-base font-bold text-surface mb-2">Connect</h4>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors flex items-center gap-2" href="mailto:hello@bantech.com">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                    hello@bantech.com
+                </a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                    Global Remote
+                </a>
+</div>
+</div>
+</footer>
+</body></html>

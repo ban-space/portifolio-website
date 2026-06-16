@@ -1,0 +1,279 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ban-Tech - Courses</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-container": "#196fc0",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#004883",
+                        "on-secondary-fixed-variant": "#004395",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "text-secondary-light": "#475569",
+                        "bg-light": "#F8FAFC",
+                        "outline-variant": "#c3c6d7",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#2170e4",
+                        "surface-dim": "#d2d9f4",
+                        "inverse-surface": "#283044",
+                        "bg-dark": "#0B1120",
+                        "surface": "#faf8ff",
+                        "tertiary": "#00569c",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "border-dark": "rgba(255, 255, 255, 0.08)",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#ebf1ff",
+                        "secondary": "#0058be",
+                        "on-surface": "#131b2e",
+                        "surface-dark": "#111827",
+                        "surface-container-low": "#f2f3ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#001c39",
+                        "on-error-container": "#93000a",
+                        "primary": "#004ac6",
+                        "text-secondary-dark": "#94A3B8",
+                        "on-background": "#131b2e",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#d8e2ff",
+                        "border-light": "#E2E8F0",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container": "#eaedff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#a4c9ff",
+                        "surface-container-high": "#e2e7ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary-container": "#fefcff",
+                        "surface-variant": "#dae2fd",
+                        "on-primary-container": "#eeefff",
+                        "card-light": "#FFFFFF",
+                        "background": "#faf8ff",
+                        "surface-tint": "#0053db",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed": "#d4e3ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-highest": "#dae2fd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "32px",
+                        "section-padding": "120px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "hero-display": ["Inter"],
+                        "section-heading": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "hero-display-mobile": ["Inter"],
+                        "card-title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "hero-display": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "section-heading": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-base": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "hero-display-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "card-title": ["22px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-nav {
+            background-color: rgba(250, 248, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .gradient-primary {
+            background: linear-gradient(135deg, #2563EB 0%, #60A5FA 100%);
+        }
+        .btn-hover-effect:hover {
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body class="bg-bg-light text-on-surface font-body-base antialiased selection:bg-primary-container selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-[80px] z-50 bg-background/80 dark:bg-surface-dark/80 backdrop-blur-md border-b border-border-light dark:border-border-dark flex justify-between items-center px-gutter max-w-container-max mx-auto w-full">
+<a class="font-hero-display text-card-title font-bold text-on-surface dark:text-surface-bright flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">developer_board</span>
+            Ban-Tech
+        </a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Home</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">About</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Services</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Blog</a>
+<a class="font-body-base text-body-base font-semibold text-secondary dark:text-secondary-fixed-dim font-bold" href="#">Course</a>
+<a class="font-body-base text-body-base font-semibold text-on-surface dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Toggle Dark Mode" class="text-on-surface hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-section-padding px-gutter max-w-container-max mx-auto">
+<!-- Header Section -->
+<header class="text-center mb-[80px]">
+<p class="font-body-sm text-body-sm text-text-secondary-light mb-stack-sm flex items-center justify-center gap-2">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Course</span>
+</p>
+<h1 class="font-section-heading text-section-heading md:text-[48px] text-on-surface mb-stack-md">Courses</h1>
+<p class="font-body-base text-body-base text-text-secondary-light max-w-[600px] mx-auto">
+                Practical courses designed to help you learn and build real-world skills. Master modern technologies with comprehensive, hands-on learning paths.
+            </p>
+</header>
+<!-- Course Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-lg">
+<!-- Course Card 1 -->
+<div class="bg-card-light rounded-[20px] border border-border-light shadow-[0_30px_60px_-15px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col transition-transform duration-300 hover:scale-[1.02]">
+<div class="h-[200px] bg-surface-container relative w-full overflow-hidden" data-alt="A clean, minimalist 3D isometric illustration representing modern web development. Features floating UI elements, code snippets, a laptop screen showing a responsive layout, and geometric shapes in shades of professional blue and crisp white against a subtle light grey background. High-key lighting, premium corporate modern aesthetic.">
+<img alt="Web Development" class="w-full h-full object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApfWmaFh_VC2LAXUlrqkaf0OSgZXqiQPNGZMc9o7TApcos5LqfBaLM25uEAOO3LtNOnUt0lgXugjs-ggq-KsOsjhdswXp7OkzEwMxgyXuvtsdAaY2bHbm-ddKw4CA5CaYU-dOmq9bE50AFbxth7SEhL8H9580CUmFZwmrHVNvz8QxG-uVr4exl17JiBLM2AvfYSu3vabwV0spbFaeTdmyus4nocm5n3kXJfGVG3EDWFoWQoRiJRF91sQHuDivt5Itl5IIw56rBwGWV">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<span class="absolute top-4 right-4 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Popular</span>
+</div>
+<div class="p-[24px] flex flex-col flex-grow">
+<h3 class="font-card-title text-card-title text-on-surface mb-stack-sm">Web Development Bootcamp</h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light mb-stack-md flex-grow">
+                        Master modern web technologies from scratch. Build responsive, high-performance applications using the latest frameworks and best practices.
+                    </p>
+<div class="flex items-center gap-4 mb-stack-md text-text-secondary-light font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            12 Weeks
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+                            Beginner to Adv.
+                        </div>
+</div>
+<button class="w-full py-3 rounded-[14px] gradient-primary text-on-primary font-body-sm text-body-sm font-semibold flex items-center justify-center gap-2 btn-hover-effect transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]">
+                        Enroll Now
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-card-light rounded-[20px] border border-border-light shadow-[0_30px_60px_-15px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col transition-transform duration-300 hover:scale-[1.02]">
+<div class="h-[200px] bg-surface-container relative w-full overflow-hidden" data-alt="An abstract, premium 3D visualization representing Artificial Intelligence. A glowing, intricate neural network node structure floating above a minimalist surface. Soft, high-key studio lighting highlights the connections in cool blues and sleek whites, conveying a sense of advanced technology and clear logic.">
+<img alt="AI Fundamentals" class="w-full h-full object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlsbYQRMW_njZbmiv7zGFDnNwsxD0xpcC56u1JVF-93tDYol9lqULfpIVj98iH7EHYMjgwpWannDQ2PGf1lGPjG5KYv-Evt5Zk0MY10wfFk0qT9Q1UvFqzpx2PazNHhhGjsMIvGk8YwjX6aMO-p4djI2Fzo6D3Yqxc0v_Bb-End0V4yn76wwekqiWdmLGByuz8y1gRxWGA6uVAZhgxgypw449Mz9_gMIBUtjqJYUbAxz_Zj9RTPdIzb_UmfpDLfu4b9M5wb27KOUvM">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<span class="absolute top-4 right-4 bg-surface text-on-surface font-label-caps text-label-caps px-3 py-1 rounded-full uppercase tracking-wider border border-border-light shadow-sm">New</span>
+</div>
+<div class="p-[24px] flex flex-col flex-grow">
+<h3 class="font-card-title text-card-title text-on-surface mb-stack-sm">AI Fundamentals</h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light mb-stack-md flex-grow">
+                        Understand the core concepts of Artificial Intelligence and Machine Learning. Learn to implement practical AI solutions in real-world scenarios.
+                    </p>
+<div class="flex items-center gap-4 mb-stack-md text-text-secondary-light font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            8 Weeks
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+                            Intermediate
+                        </div>
+</div>
+<button class="w-full py-3 rounded-[14px] bg-transparent border border-outline text-on-surface font-body-sm text-body-sm font-semibold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+                        Enroll Now
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="bg-card-light rounded-[20px] border border-border-light shadow-[0_30px_60px_-15px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col transition-transform duration-300 hover:scale-[1.02]">
+<div class="h-[200px] bg-surface-container relative w-full overflow-hidden" data-alt="A sleek, modern composition showing a high-end smartphone rendering a complex app UI. The phone rests on a pristine, light grey surface next to minimalist architectural elements. The lighting is crisp and bright, emphasizing clean lines and professional mobile app design aesthetics in a corporate modern style.">
+<img alt="Mobile Development" class="w-full h-full object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC57mPsxtTOpDhBAMz-2PtpMluU2BPCXjHVB1BzPMjXjbYL7EVzojoqZ_pjL1tpnZLEENUorTCZQGsssAveJA3Q9hBdG6ANZKCgHWCgogX5n11gzi9cufhT54CaDsYjDjjGQahUrcSRqAIw1Si3FupYQ5nUgPQExeD_wCk8Na80ymIwi4cd6oKOnN9RQzLwsP4Uen87g_GLDYQCA8yj1kynvcAh4JcRiDJFl4O0V4V9K_B42SpHWMON3LfzHQfr5R9Gad_XQNXTAZzy">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+</div>
+<div class="p-[24px] flex flex-col flex-grow">
+<h3 class="font-card-title text-card-title text-on-surface mb-stack-sm">Mobile App Mentorship</h3>
+<p class="font-body-sm text-body-sm text-text-secondary-light mb-stack-md flex-grow">
+                        One-on-one guidance to build cross-platform mobile applications. Focus on architecture, performance, and user-centric design principles.
+                    </p>
+<div class="flex items-center gap-4 mb-stack-md text-text-secondary-light font-body-sm text-body-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                            Flexible
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bar_chart</span>
+                            All Levels
+                        </div>
+</div>
+<button class="w-full py-3 rounded-[14px] bg-transparent border border-outline text-on-surface font-body-sm text-body-sm font-semibold flex items-center justify-center gap-2 hover:bg-surface-container transition-colors">
+                        Enroll Now
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-padding bg-on-surface dark:bg-surface-container-lowest text-surface dark:text-on-surface">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg px-gutter max-w-container-max mx-auto w-full">
+<div class="flex flex-col gap-4">
+<a class="font-hero-display text-card-title font-bold text-surface dark:text-on-surface flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">developer_board</span>
+                    Ban-Tech
+                </a>
+<p class="font-body-sm text-body-sm text-surface-variant max-w-[250px]">
+                    Designing, Building, and Teaching the Future of Technology.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-body-base text-body-base font-semibold">Quick Links</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Home</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">About</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Services</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Blog</a>
+<a class="font-body-sm text-body-sm text-primary-fixed dark:text-primary" href="#">Course</a>
+<a class="font-body-sm text-body-sm text-surface-variant hover:text-primary-fixed-dim transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-body-base text-body-base font-semibold">Legal</h4>
+<p class="font-body-sm text-body-sm text-surface-variant">
+                    © 2024 Ban-Tech. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>
