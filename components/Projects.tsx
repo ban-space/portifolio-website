@@ -99,9 +99,9 @@ export default function Projects() {
               </p>
               <div className="flex justify-between items-center mt-auto border-t border-border-light dark:border-border-dark pt-4">
                 <div className="flex gap-2">
-                  {project.tags.map((tag) => (
+                  {project.tags.map((tag, tagIndex) => (
                     <span
-                      key={tag}
+                      key={`${tag}-${tagIndex}`}
                       className="bg-surface dark:bg-surface-dark text-text-secondary-light dark:text-text-secondary-dark text-[10px] px-2 py-1 rounded border border-border-light dark:border-border-dark"
                     >
                       {tag}
