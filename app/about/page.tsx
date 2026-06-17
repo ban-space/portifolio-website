@@ -183,7 +183,8 @@ export default function About() {
 
       <section className="max-w-[800px] mx-auto px-6 lg:px-10 pb-20">
         <SectionHeading title="My Journey" centered />
-        <div className="relative pl-10 border-l-2 border-border dark:border-border-dark">
+        <div className="relative">
+          <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-border dark:bg-border-dark -translate-x-1/2" />
           {timeline.map((item, i) => (
             <motion.div
               key={item.period}
@@ -191,18 +192,22 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.4, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-              className="relative pb-10 last:pb-0"
+              className="group grid grid-cols-[2.5rem_1fr] gap-x-4 pb-10 last:pb-0"
             >
-              <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-card dark:bg-card-dark border-2 border-accent dark:border-accent-dark z-10 shadow-sm" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-accent dark:text-accent-dark">
-                {item.period}
-              </span>
-              <h3 className="text-lg font-semibold text-text dark:text-text-dark mt-1 tracking-tight">
-                {item.title}
-              </h3>
-              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-3 bg-card dark:bg-card-dark p-5 rounded-xl border border-border dark:border-border-dark leading-relaxed shadow-sm">
-                {item.description}
-              </p>
+              <div className="flex justify-center">
+                <div className="w-5 h-5 rounded-full bg-transparent border-2 border-accent dark:border-accent-dark z-10 shadow-sm group-hover:bg-accent dark:group-hover:bg-accent-dark group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(37,99,235,0.35)] transition-all duration-300 ease-out" />
+              </div>
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-accent dark:text-accent-dark">
+                  {item.period}
+                </span>
+                <h3 className="text-lg font-semibold text-text dark:text-text-dark mt-1 tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-3 bg-card dark:bg-card-dark p-5 rounded-xl border border-border dark:border-border-dark leading-relaxed shadow-sm group-hover:-translate-y-1 group-hover:shadow-lg transition-all duration-300 ease-out">
+                  {item.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
