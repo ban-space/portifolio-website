@@ -195,7 +195,7 @@ export default function About() {
               className="group grid grid-cols-[2.5rem_1fr] gap-x-4 pb-10 last:pb-0"
             >
               <div className="flex justify-center">
-                <div className="w-5 h-5 rounded-full bg-transparent border-2 border-accent dark:border-accent-dark z-10 shadow-sm group-hover:bg-accent dark:group-hover:bg-accent-dark group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(37,99,235,0.35)] transition-all duration-300 ease-out" />
+                <div className="w-5 h-5 rounded-full bg-bg dark:bg-bg-dark border-2 border-accent dark:border-accent-dark z-10 shadow-sm group-hover:bg-accent dark:group-hover:bg-accent-dark group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(37,99,235,0.35)] transition-all duration-300 ease-out" />
               </div>
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-accent dark:text-accent-dark">
