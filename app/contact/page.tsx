@@ -8,16 +8,13 @@ import PageTransition from "@/components/PageTransition";
 export default function Contact() {
   return (
     <PageTransition>
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-12 pb-12">
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-16 pb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-text dark:text-text-dark tracking-tight mb-4">
-            Contact Me
-          </h1>
-          <div className="flex items-center gap-2 text-sm text-text-secondary dark:text-text-secondary-dark">
+          <div className="flex items-center gap-2 mb-4 text-sm text-text-secondary dark:text-text-secondary-dark">
             <Link
               href="/"
               className="hover:text-accent dark:hover:text-accent-dark transition-colors"
@@ -29,75 +26,77 @@ export default function Contact() {
               Contact
             </span>
           </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.05] mb-4">
+            Contact Me
+          </h1>
+          <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary-dark max-w-xl">
+            Let&apos;s work together or just say hello!
+          </p>
         </motion.div>
       </section>
 
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16 md:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-4 flex flex-col gap-8"
           >
-            <p className="text-base text-text-secondary dark:text-text-secondary-dark">
-              Let&apos;s work together or just say hello!
-            </p>
-
             <div className="flex flex-col gap-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-surface dark:bg-surface-dark flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
-                  <Mail size={20} />
+              <div className="flex items-start gap-4 group">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
+                  <Mail size={18} />
                 </div>
                 <div>
-                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium">Email</span>
+                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium uppercase tracking-wider">Email</span>
                   <a
                     href="mailto:banspace21@gmail.com"
-                    className="block text-sm font-semibold text-text dark:text-text-dark hover:text-accent dark:hover:text-accent-dark transition-colors"
+                    className="block text-sm font-semibold text-text dark:text-text-dark hover:text-accent dark:hover:text-accent-dark transition-colors mt-0.5"
                   >
                     banspace21@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-surface dark:bg-surface-dark flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
-                  <Phone size={20} />
+              <div className="flex items-start gap-4 group">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
+                  <Phone size={18} />
                 </div>
                 <div>
-                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium">Phone</span>
+                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium uppercase tracking-wider">Phone</span>
                   <a
                     href="tel:0927789173"
-                    className="block text-sm font-semibold text-text dark:text-text-dark hover:text-accent dark:hover:text-accent-dark transition-colors"
+                    className="block text-sm font-semibold text-text dark:text-text-dark hover:text-accent dark:hover:text-accent-dark transition-colors mt-0.5"
                   >
                     0927789173
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-surface dark:bg-surface-dark flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
-                  <MapPin size={20} />
+              <div className="flex items-start gap-4 group">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
+                  <MapPin size={18} />
                 </div>
                 <div>
-                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium">Location</span>
-                  <span className="block text-sm font-semibold text-text dark:text-text-dark">
+                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium uppercase tracking-wider">Location</span>
+                  <span className="block text-sm font-semibold text-text dark:text-text-dark mt-0.5">
                     Addis Ababa, Ethiopia
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-surface dark:bg-surface-dark flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
-                  <Send size={20} />
+              <div className="flex items-start gap-4 group">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark shrink-0">
+                  <Send size={18} />
                 </div>
                 <div>
-                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium">Telegram</span>
+                  <span className="text-xs text-text-secondary dark:text-text-secondary-dark font-medium uppercase tracking-wider">Telegram</span>
                   <a
                     href="https://t.me/ban_devs"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-sm font-semibold text-text dark:text-text-dark hover:text-accent dark:hover:text-accent-dark transition-colors"
+                    className="block text-sm font-semibold text-text dark:text-text-dark hover:text-accent dark:hover:text-accent-dark transition-colors mt-0.5"
                   >
                     @ban_devs
                   </a>
@@ -109,11 +108,11 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-8 bg-card dark:bg-card-dark rounded-2xl border border-border dark:border-border-dark p-8 lg:p-10 shadow-sm"
           >
             <form className="flex flex-col gap-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="sr-only">
                     Your Name
@@ -162,10 +161,10 @@ export default function Contact() {
               <div>
                 <button
                   type="submit"
-                  className="w-full md:w-auto px-8 py-3 rounded-xl bg-accent dark:bg-accent-dark text-white text-sm font-semibold hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-sm"
+                  className="group w-full md:w-auto px-8 py-3 rounded-xl bg-accent dark:bg-accent-dark text-white text-sm font-semibold hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2 shadow-md"
                 >
                   Send Message
-                  <ArrowRight size={16} />
+                  <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
             </form>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Puzzle, Lightbulb, BookOpen, Code } from "lucide-react";
+import { ArrowRight, Puzzle, Lightbulb, BookOpen } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -58,9 +58,17 @@ const timeline = [
 export default function About() {
   return (
     <PageTransition>
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-12 pb-8">
-        <div className="flex flex-col items-center text-center gap-2">
-          <SectionHeading title="About Me" centered />
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-16 pb-8">
+        <div className="flex flex-col items-center text-center gap-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border dark:border-border-dark bg-card dark:bg-card-dark">
+            <span className="w-2 h-2 rounded-full bg-accent dark:text-accent-dark animate-pulse-soft" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-accent dark:text-accent-dark">
+              About
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-text dark:text-text-dark tracking-tight">
+            About Me
+          </h1>
           <div className="flex items-center gap-2 text-sm text-text-secondary dark:text-text-secondary-dark">
             <Link
               href="/"
@@ -76,22 +84,23 @@ export default function About() {
         </div>
       </section>
 
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16 md:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative w-full aspect-[3/4] max-w-[400px] mx-auto">
+            <div className="relative w-full aspect-[3/4] max-w-[380px] mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent rounded-2xl" />
               <Image
                 src="/about.png"
                 alt="Biniyam Gebreslassie"
                 fill
-                className="object-contain drop-shadow-lg"
-                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-contain drop-shadow-xl"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </motion.div>
@@ -100,11 +109,11 @@ export default function About() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-7 flex flex-col gap-8"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-text dark:text-text-dark mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-text dark:text-text-dark mb-4 tracking-tight leading-[1.1]">
                 Founder of Ban-Tech
               </h2>
               <div className="text-base text-text-secondary dark:text-text-secondary-dark space-y-4 leading-relaxed">
@@ -123,20 +132,17 @@ export default function About() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { label: "University", value: "Bahir Dar University" },
-                {
-                  label: "Degree",
-                  value: "Third Year Software Engineering",
-                },
+                { label: "Degree", value: "Third Year Software Engineering" },
                 { label: "Focus", value: "Building, Teaching and Innovating" },
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="p-5 rounded-xl border border-border dark:border-border-dark bg-card dark:bg-card-dark hover:shadow-lg transition-shadow duration-300"
+                  className="p-5 rounded-xl border border-border dark:border-border-dark bg-card dark:bg-card-dark shadow-sm hover:shadow-md transition-shadow duration-300"
                 >
                   <span className="text-xs font-semibold uppercase tracking-wider text-accent dark:text-accent-dark">
                     {item.label}
                   </span>
-                  <p className="text-sm font-semibold text-text dark:text-text-dark mt-1">
+                  <p className="text-sm font-semibold text-text dark:text-text-dark mt-1 leading-snug">
                     {item.value}
                   </p>
                 </div>
@@ -146,8 +152,8 @@ export default function About() {
         </div>
       </section>
 
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16 md:pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {traits.map((trait, i) => {
             const Icon = trait.icon;
             return (
@@ -156,17 +162,17 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
+                transition={{ duration: 0.4, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group p-8 rounded-2xl border border-border dark:border-border-dark bg-card dark:bg-card-dark hover:shadow-xl transition-all duration-300"
+                className="group p-8 rounded-2xl border border-border dark:border-border-dark bg-card dark:bg-card-dark hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-2xl bg-surface dark:bg-surface-dark flex items-center justify-center text-accent dark:text-accent-dark group-hover:bg-accent dark:group-hover:bg-accent-dark group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark group-hover:bg-accent dark:group-hover:bg-accent-dark group-hover:text-white transition-colors duration-300">
                   <Icon size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-text dark:text-text-dark mt-4 mb-2">
+                <h3 className="text-xl font-semibold text-text dark:text-text-dark mt-4 mb-2 tracking-tight">
                   {trait.title}
                 </h3>
-                <p className="text-sm text-text-secondary dark:text-text-secondary-dark">
+                <p className="text-sm text-text-secondary dark:text-text-secondary-dark leading-relaxed">
                   {trait.description}
                 </p>
               </motion.div>
@@ -175,7 +181,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="max-w-[800px] mx-auto px-6 lg:px-10 pb-16">
+      <section className="max-w-[800px] mx-auto px-6 lg:px-10 pb-20">
         <SectionHeading title="My Journey" centered />
         <div className="relative pl-10 border-l-2 border-border dark:border-border-dark">
           {timeline.map((item, i) => (
@@ -184,17 +190,17 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
               className="relative pb-10 last:pb-0"
             >
-              <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-card dark:bg-card-dark border-2 border-accent dark:border-accent-dark z-10" />
+              <div className="absolute left-[-9px] top-1 w-4 h-4 rounded-full bg-card dark:bg-card-dark border-2 border-accent dark:border-accent-dark z-10 shadow-sm" />
               <span className="text-xs font-semibold uppercase tracking-wider text-accent dark:text-accent-dark">
                 {item.period}
               </span>
-              <h3 className="text-lg font-semibold text-text dark:text-text-dark mt-1">
+              <h3 className="text-lg font-semibold text-text dark:text-text-dark mt-1 tracking-tight">
                 {item.title}
               </h3>
-              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-2 bg-card dark:bg-card-dark p-5 rounded-xl border border-border dark:border-border-dark">
+              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-3 bg-card dark:bg-card-dark p-5 rounded-xl border border-border dark:border-border-dark leading-relaxed shadow-sm">
                 {item.description}
               </p>
             </motion.div>
