@@ -38,16 +38,6 @@ export default function Hero() {
   });
   const legacyBackgroundY = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const legacyBackgroundOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroCopyX = useTransform(
-    scrollYProgress,
-    [0, 0.38],
-    reduceMotion ? [0, 0] : [-64, 0],
-  );
-  const codeWindowX = useTransform(
-    scrollYProgress,
-    [0, 0.38],
-    reduceMotion ? [0, 0] : [64, 0],
-  );
 
   const pointerX = useSpring(useMotionValue(0), {
     stiffness: 72,
@@ -138,7 +128,7 @@ export default function Hero() {
 
         <motion.div
           className={styles.devWindow}
-          style={{ x: codeWindowX, y: codeLift }}
+          style={{ y: codeLift }}
           aria-hidden="true"
         >
           <div className={styles.devTopbar}>
@@ -178,7 +168,6 @@ export default function Hero() {
         </motion.div>
 
         <div className={styles.heroCopy}>
-          <motion.div style={{ x: heroCopyX }}>
           <p className={styles.eyebrow}>
             <span className={styles.eyebrowDot} />
             HELLO, I&apos;M BINIYAM GEBRESLASSIE
@@ -231,7 +220,6 @@ export default function Hero() {
               ))}
             </nav>
           </div>
-          </motion.div>
         </div>
 
         <div className={styles.bottomCaption} aria-hidden="true">
