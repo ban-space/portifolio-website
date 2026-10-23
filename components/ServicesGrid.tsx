@@ -10,6 +10,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import ParallaxElement from "@/components/ParallaxElement";
 
 const services = [
   { icon: Globe, title: "Web Development", description: "Modern responsive and high-performance websites and web applications" },
@@ -42,7 +43,9 @@ export default function ServicesGrid({ showHeading = true }: ServicesGridProps) 
               className="group relative overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 p-6 md:p-7 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
             >
               <span className="absolute right-5 top-5 text-[9px] font-bold tracking-[.14em] text-text-secondary/50 dark:text-text-secondary-dark/50">0{index + 1}</span>
-              <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-accent/[0.04] dark:bg-accent-dark/[0.06] transition-transform duration-500 group-hover:scale-125" aria-hidden="true" />
+              <ParallaxElement className="pointer-events-none absolute -right-12 -top-12" distance={15}>
+                <div className="h-36 w-36 rounded-full bg-accent/[0.04] dark:bg-accent-dark/[0.06] transition-transform duration-500 group-hover:scale-125" />
+              </ParallaxElement>
               <div className="relative z-10 flex h-full flex-col gap-4">
                 <span className="grid w-12 h-12 place-items-center rounded-[1rem] border border-accent/10 dark:border-accent-dark/15 bg-gradient-to-br from-accent/12 to-coral/10 text-accent dark:text-accent-dark transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
                   <Icon size={22} aria-hidden="true" />

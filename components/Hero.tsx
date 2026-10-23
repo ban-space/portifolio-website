@@ -14,14 +14,11 @@ import {
 import {
   ArrowDownRight,
   ArrowRight,
-  Bot,
-  Code,
   Download,
   GitBranch,
   Globe,
   Play,
   Send,
-  Sparkles,
 } from "lucide-react";
 import styles from "./Hero.module.css";
 
@@ -103,16 +100,11 @@ export default function Hero() {
               alt="Abstract 3D sculpture of cobalt glass ribbons, polished chrome, and bright citrus-colored orbs"
               fill
               preload
-              sizes="(max-width: 700px) 110vw, 74vw"
+              sizes="(max-width: 700px) 124vw, 114vw"
               className={styles.artwork}
             />
           </motion.div>
         </motion.div>
-
-        <div className={styles.orbitNote} aria-hidden="true">
-          <Sparkles size={20} strokeWidth={1.7} />
-          <span>IDEAS IN<br />ANOTHER LIGHT</span>
-        </div>
 
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>
@@ -168,24 +160,6 @@ export default function Hero() {
             </nav>
           </div>
         </div>
-
-        <motion.div
-          className={`${styles.skillCard} ${styles.developerCard}`}
-          animate={reduceMotion ? { y: 0 } : { y: [0, -8, 0] }}
-          transition={{ duration: 4, repeat: reduceMotion ? 0 : Infinity, ease: "easeInOut" }}
-        >
-          <span className={styles.skillIcon}><Code size={18} aria-hidden="true" /></span>
-          <span><strong>Full Stack</strong><small>Developer</small></span>
-        </motion.div>
-
-        <motion.div
-          className={`${styles.skillCard} ${styles.aiCard}`}
-          animate={reduceMotion ? { y: 0 } : { y: [0, 8, 0] }}
-          transition={{ duration: 5, repeat: reduceMotion ? 0 : Infinity, ease: "easeInOut" }}
-        >
-          <span className={styles.skillIcon}><Bot size={18} aria-hidden="true" /></span>
-          <span><strong>AI Engineer</strong><small>&amp; Instructor</small></span>
-        </motion.div>
 
         <div className={styles.bottomCaption} aria-hidden="true">
           <span>FORM FOLLOWS FEELING</span>

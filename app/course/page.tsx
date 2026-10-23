@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, BarChart, Play, Code2, Layers3, Smartphone } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
+import ParallaxElement from "@/components/ParallaxElement";
 
 export default function Course() {
   return (
@@ -25,7 +26,9 @@ export default function Course() {
         >
           <div className="relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800 via-blue-600 to-cyan-400 md:h-64" aria-hidden="true">
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:22px_22px]" />
-            <div className="absolute h-36 w-36 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-14px_-16px_25px_rgba(12,22,65,.24),inset_10px_10px_20px_rgba(255,255,255,.5),0_20px_38px_rgba(9,20,50,.22)] backdrop-blur-sm md:h-44 md:w-44" />
+            <ParallaxElement className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" distance={20}>
+              <div className="h-36 w-36 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-14px_-16px_25px_rgba(12,22,65,.24),inset_10px_10px_20px_rgba(255,255,255,.5),0_20px_38px_rgba(9,20,50,.22)] backdrop-blur-sm md:h-44 md:w-44" />
+            </ParallaxElement>
             <div className="relative grid h-16 w-16 place-items-center rounded-2xl border border-white/55 bg-white/20 text-white shadow-lg backdrop-blur-md">
               <Code2 size={31} aria-hidden="true" />
             </div>

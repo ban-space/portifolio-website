@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   min-height: calc(100svh - 72px);
-  padding: 22px clamp(14px, 3.6vw, 54px) 34px;
+  padding: 0;
   isolation: isolate;
   overflow: hidden;
 }
@@ -15,10 +15,10 @@
 .stage {
   position: relative;
   width: 100%;
-  height: min(790px, calc(100svh - 128px));
+  height: min(1020px, calc(100svh - 72px));
   min-height: 640px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 0;
   background: var(--hero-butter);
   color: var(--hero-ink);
   isolation: isolate;
@@ -63,7 +63,8 @@
   z-index: 0;
   top: -7%;
   right: -7%;
-  width: 74%;
+  left: -7%;
+  width: auto;
   height: 114%;
   transform-origin: 62% 47%;
   will-change: transform;
@@ -78,30 +79,8 @@
 
 .artwork {
   object-fit: cover;
-  object-position: 57% center;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / .7) 17%, #000 36%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgb(0 0 0 / .7) 17%, #000 36%);
+  object-position: 58% center;
   user-select: none;
-}
-
-.orbitNote {
-  position: absolute;
-  z-index: 3;
-  top: 21%;
-  right: 18%;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--hero-ink);
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  line-height: 1.5;
-  transform: rotate(8deg);
-}
-
-.orbitNote svg {
-  color: var(--hero-orange);
 }
 
 .heroCopy {
@@ -265,58 +244,6 @@
   transform: translateY(-1px);
 }
 
-.skillCard {
-  position: absolute;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 15px 10px 10px;
-  border: 1px solid rgb(255 255 255 / 65%);
-  border-radius: 13px;
-  background: rgb(255 253 239 / 79%);
-  box-shadow: 0 12px 36px rgb(28 32 48 / 12%);
-  color: var(--hero-ink);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-}
-
-.skillCard > span:last-child {
-  display: grid;
-  gap: 2px;
-}
-
-.skillCard strong {
-  font-size: 11px;
-  line-height: 1.1;
-}
-
-.skillCard small {
-  color: #6b675b;
-  font-size: 9px;
-  line-height: 1.1;
-}
-
-.skillIcon {
-  display: grid;
-  width: 33px;
-  height: 33px;
-  place-items: center;
-  border-radius: 9px;
-  background: rgb(49 87 245 / 10%);
-  color: var(--hero-blue);
-}
-
-.developerCard {
-  top: 23%;
-  right: 6%;
-}
-
-.aiCard {
-  right: 7%;
-  bottom: 24%;
-}
-
 .bottomCaption {
   position: absolute;
   z-index: 4;
@@ -339,19 +266,6 @@
 }
 
 @media (max-width: 980px) {
-  .hero {
-    padding-inline: 18px;
-  }
-
-  .stage {
-    height: min(820px, calc(100svh - 112px));
-  }
-
-  .imageZoom {
-    right: -18%;
-    width: 88%;
-  }
-
   .heroCopy {
     left: 6%;
     width: 85%;
@@ -361,30 +275,29 @@
     font-size: clamp(58px, 8.4vw, 84px);
   }
 
-  .developerCard {
-    right: 6%;
-  }
-
-  .aiCard {
-    right: 6%;
-  }
 }
 
 @media (max-width: 700px) {
   .hero {
     min-height: calc(100svh - 72px);
-    padding: 12px;
+    padding: 0;
   }
 
   .stage {
-    height: calc(100svh - 108px);
+    height: calc(100svh - 72px);
     min-height: 690px;
-    max-height: 900px;
-    border-radius: 3px;
+    max-height: none;
+    border-radius: 0;
   }
 
   .stage::before {
-    background: linear-gradient(180deg, rgb(246 232 171 / 0%) 0%, rgb(246 232 171 / 18%) 42%, rgb(246 232 171 / 98%) 71%);
+    background: linear-gradient(
+      180deg,
+      rgb(246 232 171 / 0%) 0%,
+      rgb(246 232 171 / 12%) 28%,
+      rgb(246 232 171 / 90%) 52%,
+      rgb(246 232 171 / 98%) 66%
+    );
   }
 
   .sceneIndex {
@@ -397,8 +310,9 @@
 
   .imageZoom {
     top: -2%;
-    right: -25%;
-    width: 112%;
+    right: -12%;
+    left: -12%;
+    width: auto;
     height: 72%;
     transform-origin: 58% 42%;
   }
@@ -407,17 +321,6 @@
     object-position: 60% center;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 63%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 63%, transparent 100%);
-  }
-
-  .orbitNote {
-    top: 26%;
-    right: 16%;
-    gap: 5px;
-    font-size: 7px;
-  }
-
-  .orbitNote svg {
-    width: 16px;
   }
 
   .heroCopy {
@@ -483,39 +386,6 @@
   .socialLink {
     gap: 4px;
     font-size: 9px;
-  }
-
-  .skillCard {
-    gap: 7px;
-    padding: 7px 10px 7px 7px;
-    border-radius: 10px;
-  }
-
-  .skillIcon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .skillIcon svg {
-    width: 15px;
-  }
-
-  .skillCard strong {
-    font-size: 9px;
-  }
-
-  .skillCard small {
-    font-size: 8px;
-  }
-
-  .developerCard {
-    top: 20%;
-    right: 13px;
-  }
-
-  .aiCard {
-    right: 15px;
-    bottom: 44%;
   }
 
   .bottomCaption {

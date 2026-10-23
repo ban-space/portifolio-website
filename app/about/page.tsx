@@ -6,6 +6,7 @@ import { Puzzle, Lightbulb, BookOpen, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
+import ParallaxElement from "@/components/ParallaxElement";
 
 const traits = [
   {
@@ -62,7 +63,9 @@ export default function About() {
             transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-5 relative"
           >
-            <div className="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-accent/15 via-transparent to-coral/12 blur-2xl" aria-hidden="true" />
+            <ParallaxElement className="pointer-events-none absolute -inset-5" distance={22}>
+              <div className="h-full w-full rounded-[2rem] bg-gradient-to-br from-accent/15 via-transparent to-coral/12 blur-2xl" />
+            </ParallaxElement>
             <div className="relative mx-auto aspect-[4/4.6] w-full max-w-[400px] overflow-hidden rounded-[1.8rem] border border-border dark:border-border-dark bg-gradient-to-br from-surface to-card dark:from-surface-dark dark:to-card-dark shadow-lg">
               <div className="absolute right-7 top-7 h-24 w-24 rounded-full border border-accent/20 dark:border-accent-dark/20" aria-hidden="true" />
               <Image

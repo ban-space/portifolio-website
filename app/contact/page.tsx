@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone, MapPin, Send, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
+import ParallaxElement from "@/components/ParallaxElement";
 
 function openEmailDraft(event: FormEvent<HTMLFormElement>) {
   event.preventDefault();
@@ -43,7 +44,9 @@ export default function Contact() {
             transition={{ duration: 0.42, ease: [0.25, 0.4, 0.25, 1] }}
             className="relative overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark bg-card/80 dark:bg-card-dark/85 p-6 md:p-8 shadow-sm lg:col-span-4"
           >
-            <div className="absolute -right-14 -top-14 h-44 w-44 rounded-full border border-accent/10 dark:border-accent-dark/10" aria-hidden="true" />
+            <ParallaxElement className="pointer-events-none absolute -right-14 -top-14" distance={14}>
+              <div className="h-44 w-44 rounded-full border border-accent/10 dark:border-accent-dark/10" />
+            </ParallaxElement>
             <div className="relative z-10">
               <p className="mb-3 text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">Contact details</p>
               <h2 className="text-xl font-semibold text-text dark:text-text-dark tracking-tight">Let&apos;s connect</h2>

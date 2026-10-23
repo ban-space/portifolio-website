@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Search, Star, Braces, Cpu, Compass, ArrowUpRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
+import ParallaxElement from "@/components/ParallaxElement";
 
 const categories = ["All", "C++", "AI", "Web Development", "Career", "Tips", "University"];
 
@@ -130,9 +131,9 @@ export default function Blog() {
               className={`relative flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[1.7rem] bg-gradient-to-br ${featuredPost.art} p-6 md:col-span-8 md:p-9`}
             >
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:24px_24px]" aria-hidden="true" />
-              <div className="absolute right-[10%] top-[10%] grid h-40 w-40 place-items-center rounded-full border border-white/60 bg-white/20 shadow-[inset_-14px_-18px_30px_rgba(12,22,65,.24),inset_10px_10px_22px_rgba(255,255,255,.5),0_25px_48px_rgba(9,20,50,.24)] backdrop-blur-sm md:h-52 md:w-52" aria-hidden="true">
+              <ParallaxElement className="absolute right-[10%] top-[10%] grid h-40 w-40 place-items-center rounded-full border border-white/60 bg-white/20 shadow-[inset_-14px_-18px_30px_rgba(12,22,65,.24),inset_10px_10px_22px_rgba(255,255,255,.5),0_25px_48px_rgba(9,20,50,.24)] backdrop-blur-sm md:h-52 md:w-52" distance={24}>
                 {(() => { const Icon = featuredPost.icon; return <Icon size={58} className="text-white/90" aria-hidden="true" />; })()}
-              </div>
+              </ParallaxElement>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" aria-hidden="true" />
               <div className="relative z-10 max-w-2xl">
                 <div className="mb-4 flex gap-2">
