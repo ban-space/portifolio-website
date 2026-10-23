@@ -77,32 +77,49 @@
   will-change: transform;
 }
 
-.legacyParallaxGlow {
+.legacyParallaxLayer {
   position: absolute;
   z-index: 2;
-  top: -40px;
-  right: -200px;
-  width: min(800px, 84vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgb(49 87 245 / 14%) 0%, rgb(49 87 245 / 7%) 35%, transparent 72%);
-  filter: blur(40px);
+  inset: 0;
   pointer-events: none;
-  will-change: transform;
+  will-change: transform, opacity;
+}
+
+.legacyParallaxGlow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  pointer-events: none;
+}
+
+.legacyParallaxGlowTop {
+  top: -10%;
+  right: -10%;
+  width: min(600px, 68vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(49 87 245 / 17%) 0%, transparent 70%);
+}
+
+.legacyParallaxGlowLeft {
+  bottom: 10%;
+  left: -5%;
+  width: min(400px, 48vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(255 104 64 / 11%) 0%, transparent 70%);
+}
+
+.legacyParallaxGlowCenter {
+  top: 40%;
+  left: 30%;
+  width: min(300px, 38vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(166 195 66 / 9%) 0%, transparent 70%);
 }
 
 .artwork {
   object-fit: cover;
   object-position: 58% center;
   user-select: none;
-}
-
-.devLegacyLayer {
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  pointer-events: none;
-  will-change: transform;
 }
 
 .devWindow {

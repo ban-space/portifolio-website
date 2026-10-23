@@ -32,21 +32,12 @@ const socialLinks = [
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollY: pageScrollY } = useScroll();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const legacyBackgroundY = useTransform(
-    pageScrollY,
-    [0, 500],
-    reduceMotion ? [0, 0] : [0, 150],
-  );
-  const legacyBadgeY = useTransform(
-    pageScrollY,
-    [0, 500],
-    reduceMotion ? [0, 0] : [0, -20],
-  );
+  const legacyBackgroundY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const legacyBackgroundOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const pointerX = useSpring(useMotionValue(0), {
     stiffness: 72,
@@ -123,17 +114,23 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className={styles.legacyParallaxGlow}
-          style={{ y: legacyBackgroundY }}
-          aria-hidden="true"
-        />
-
-        <motion.div
-          className={styles.devLegacyLayer}
-          style={{ y: legacyBadgeY }}
+          className={styles.legacyParallaxLayer}
+          style={{
+            y: reduceMotion ? 0 : legacyBackgroundY,
+            opacity: reduceMotion ? 1 : legacyBackgroundOpacity,
+          }}
           aria-hidden="true"
         >
-          <motion.div className={styles.devWindow} style={{ y: codeLift }}>
+          <div className={`${styles.legacyParallaxGlow} ${styles.legacyParallaxGlowTop}`} />
+          <div className={`${styles.legacyParallaxGlow} ${styles.legacyParallaxGlowLeft}`} />
+          <div className={`${styles.legacyParallaxGlow} ${styles.legacyParallaxGlowCenter}`} />
+        </motion.div>
+
+        <motion.div
+          className={styles.devWindow}
+          style={{ y: codeLift }}
+          aria-hidden="true"
+        >
           <div className={styles.devTopbar}>
             <span className={styles.devDots}>
               <i />
@@ -168,7 +165,6 @@ export default function Hero() {
             <span><span className={styles.devPrompt}>›</span> pnpm dev</span>
             <span className={styles.devBranch}>main</span>
           </div>
-          </motion.div>
         </motion.div>
 
         <div className={styles.heroCopy}>
