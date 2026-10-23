@@ -1,161 +1,189 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type PointerEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Download, GitBranch, Globe, Play, Send, Code, Bot } from "lucide-react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import {
+  ArrowDownRight,
+  ArrowRight,
+  Bot,
+  Code,
+  Download,
+  GitBranch,
+  Globe,
+  Play,
+  Send,
+  Sparkles,
+} from "lucide-react";
+import styles from "./Hero.module.css";
+
+const socialLinks = [
+  { href: "https://github.com/ban-space", icon: GitBranch, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/ban-tech", icon: Globe, label: "LinkedIn" },
+  { href: "https://youtube.com/@ban_tech", icon: Play, label: "YouTube" },
+  { href: "https://t.me/ban_devs", icon: Send, label: "Telegram" },
+];
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const pointerX = useSpring(useMotionValue(0), {
+    stiffness: 72,
+    damping: 24,
+    mass: 0.7,
+  });
+  const pointerY = useSpring(useMotionValue(0), {
+    stiffness: 72,
+    damping: 24,
+    mass: 0.7,
+  });
+  const imageScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [1, 1] : [1, 1.27],
+  );
+  const imageLift = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, 78],
+  );
+  const imageX = useTransform(pointerX, [-1, 1], [13, -13]);
+  const imageY = useTransform(pointerY, [-1, 1], [10, -10]);
+
+  function moveArtwork(event: PointerEvent<HTMLElement>) {
+    if (reduceMotion || event.pointerType === "touch") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+
+    pointerX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 2);
+    pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 2);
+  }
+
+  function resetArtwork() {
+    pointerX.set(0);
+    pointerY.set(0);
+  }
 
   return (
     <section
-      ref={ref}
-      className="relative min-h-[calc(100vh-72px)] flex items-center overflow-hidden"
+      ref={sectionRef}
+      className={styles.hero}
+      aria-labelledby="portfolio-hero-title"
+      onPointerMove={moveArtwork}
+      onPointerLeave={resetArtwork}
     >
-      <motion.div style={{ y: bgY, opacity }} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-gradient-to-br from-accent/8 to-transparent rounded-full blur-[80px]" />
-        <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-gradient-to-tr from-accent/5 to-transparent rounded-full blur-[60px]" />
-        <div className="absolute top-[40%] left-[30%] w-[300px] h-[300px] bg-gradient-to-r from-accent/4 to-transparent rounded-full blur-[50px]" />
-      </motion.div>
+      <div className={styles.stage}>
+        <div className={styles.sceneGrid} aria-hidden="true" />
+        <div className={styles.sceneIndex} aria-hidden="true">
+          <span>CREATIVE TECHNOLOGY</span>
+          <span>01 / 01</span>
+        </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
-            className="z-10"
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-accent dark:text-accent-dark text-sm font-semibold mb-4 tracking-wide"
-            >
-              Hello, I&apos;m <span className="font-bold">Biniyam Gebreslassie</span>
-            </motion.p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.05] mb-5">
-              Designing, Building, and Teaching the Future of{" "}
-              <span className="text-accent dark:text-accent-dark relative">
-                Technology
-                <span className="absolute -inset-1 bg-accent/10 dark:bg-accent-dark/10 blur-xl rounded-lg -z-10" />
-              </span>
-            </h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-base md:text-lg text-text-secondary dark:text-text-secondary-dark max-w-lg leading-relaxed mb-8"
-            >
+        <motion.div
+          className={styles.imageZoom}
+          style={{ scale: imageScale, y: imageLift }}
+          aria-hidden="true"
+        >
+          <motion.div className={styles.imageDrift} style={{ x: imageX, y: imageY }}>
+            <Image
+              src="/hero-art.webp"
+              alt="Abstract 3D sculpture of cobalt glass ribbons, polished chrome, and bright citrus-colored orbs"
+              fill
+              preload
+              sizes="(max-width: 700px) 110vw, 74vw"
+              className={styles.artwork}
+            />
+          </motion.div>
+        </motion.div>
+
+        <div className={styles.orbitNote} aria-hidden="true">
+          <Sparkles size={20} strokeWidth={1.7} />
+          <span>IDEAS IN<br />ANOTHER LIGHT</span>
+        </div>
+
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>
+            <span className={styles.eyebrowDot} />
+            HELLO, I&apos;M BINIYAM GEBRESLASSIE
+          </p>
+
+          <h1 className={styles.headline} id="portfolio-hero-title">
+            Designing.<br />
+            Building.<br />
+            And teaching the<br />
+            <em>future of technology.</em>
+          </h1>
+
+          <div className={styles.lowerCopy}>
+            <p className={styles.description}>
               Ban-Tech delivers cutting-edge technology solutions that drive
               business growth, innovation, and efficiency.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap gap-4"
-            >
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 bg-accent dark:bg-accent-dark text-white text-sm font-semibold py-3 px-6 rounded-xl hover:brightness-110 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 duration-200"
-              >
-                Get In Touch
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+            </p>
+
+            <div className={styles.actions}>
+              <Link href="/contact" className={styles.primaryAction}>
+                Get in touch
+                <span className={styles.actionIcon}>
+                  <ArrowRight size={17} aria-hidden="true" />
+                </span>
               </Link>
-              <button className="group inline-flex items-center gap-2 border border-border dark:border-border-dark text-text dark:text-text-dark text-sm font-semibold py-3 px-6 rounded-xl hover:bg-surface dark:hover:bg-surface-dark hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-sm">
+              <button type="button" className={styles.secondaryAction}>
                 Download CV
-                <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
+                <Download size={16} aria-hidden="true" />
               </button>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex gap-5 mt-10 text-text-secondary dark:text-text-secondary-dark"
-            >
-              {[
-                { href: "https://github.com/ban-space", icon: GitBranch, label: "GitHub" },
-                { href: "https://www.linkedin.com/in/ban-tech", icon: Globe, label: "LinkedIn" },
-                { href: "https://youtube.com/@ban_tech", icon: Play, label: "YouTube" },
-                { href: "https://t.me/ban_devs", icon: Send, label: "Telegram" },
-              ].map(({ href, icon: Icon, label }) => (
+            </div>
+
+            <nav className={styles.socialLinks} aria-label="Social links">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-1.5 text-sm hover:text-accent dark:hover:text-accent-dark transition-colors"
+                  className={styles.socialLink}
                 >
-                  <Icon size={16} className="group-hover:scale-110 transition-transform" />
+                  <Icon size={15} aria-hidden="true" />
                   <span>{label}</span>
                 </a>
               ))}
-            </motion.div>
-          </motion.div>
+            </nav>
+          </div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end z-10"
-          >
-            <div className="relative w-full max-w-[420px] aspect-[4/5] flex items-end justify-center">
-              <Image
-                src="/hero.png"
-                alt="Biniyam Gebreslassie"
-                fill
-                priority
-                className="object-contain object-bottom"
-                sizes="(max-width: 768px) 100vw, 420px"
-              />
+        <motion.div
+          className={`${styles.skillCard} ${styles.developerCard}`}
+          animate={reduceMotion ? { y: 0 } : { y: [0, -8, 0] }}
+          transition={{ duration: 4, repeat: reduceMotion ? 0 : Infinity, ease: "easeInOut" }}
+        >
+          <span className={styles.skillIcon}><Code size={18} aria-hidden="true" /></span>
+          <span><strong>Full Stack</strong><small>Developer</small></span>
+        </motion.div>
 
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[18%] left-[-16px] md:left-[-32px] bg-card/80 dark:bg-card-dark/80 backdrop-blur-xl rounded-xl p-3 pr-4 flex items-center gap-3 shadow-lg border border-border dark:border-border-dark"
-              >
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark">
-                  <Code size={20} />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-text dark:text-text-dark leading-tight">
-                    Full Stack
-                  </p>
-                  <p className="text-[11px] text-text-secondary dark:text-text-secondary-dark leading-tight">
-                    Developer
-                  </p>
-                </div>
-              </motion.div>
+        <motion.div
+          className={`${styles.skillCard} ${styles.aiCard}`}
+          animate={reduceMotion ? { y: 0 } : { y: [0, 8, 0] }}
+          transition={{ duration: 5, repeat: reduceMotion ? 0 : Infinity, ease: "easeInOut" }}
+        >
+          <span className={styles.skillIcon}><Bot size={18} aria-hidden="true" /></span>
+          <span><strong>AI Engineer</strong><small>&amp; Instructor</small></span>
+        </motion.div>
 
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-[28%] right-[-8px] md:right-[-24px] bg-card/80 dark:bg-card-dark/80 backdrop-blur-xl rounded-xl p-3 pr-4 flex items-center gap-3 shadow-lg border border-border dark:border-border-dark"
-              >
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent-dark/10 dark:to-accent-dark/5 flex items-center justify-center text-accent dark:text-accent-dark">
-                  <Bot size={20} />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-text dark:text-text-dark leading-tight">
-                    AI Engineer
-                  </p>
-                  <p className="text-[11px] text-text-secondary dark:text-text-secondary-dark leading-tight">
-                    &amp; Instructor
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+        <div className={styles.bottomCaption} aria-hidden="true">
+          <span>FORM FOLLOWS FEELING</span>
+          <span>SCROLL TO SEE WHAT&apos;S NEXT <ArrowDownRight size={13} /></span>
         </div>
       </div>
     </section>
