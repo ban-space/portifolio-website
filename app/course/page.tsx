@@ -1,141 +1,100 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, BarChart, Play } from "lucide-react";
+import { ArrowRight, Clock, BarChart, Play, Code2, Layers3, Smartphone } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import PageHeader from "@/components/PageHeader";
 
 export default function Course() {
   return (
     <PageTransition>
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-16 pb-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-        >
-          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-text-secondary dark:text-text-secondary-dark">
-            <Link
-              href="/"
-              className="hover:text-accent dark:hover:text-accent-dark transition-colors"
-            >
-              Home
-            </Link>
-            <ArrowRight size={14} />
-            <span className="font-semibold text-text dark:text-text-dark">
-              Course
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.05] mb-4">
-            Courses
-          </h1>
-          <p className="text-base md:text-lg text-text-secondary dark:text-text-secondary-dark max-w-[600px] mx-auto">
-            Practical courses designed to help you learn and build real-world
-            skills
-          </p>
-        </motion.div>
-      </section>
+      <PageHeader
+        eyebrow="Learning"
+        title="Courses"
+        description="Practical courses designed to help you learn and build real-world skills"
+        currentPage="Course"
+        variant="course"
+      />
 
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-7 md:py-10" aria-label="Featured course">
+        <motion.article
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-          className="rounded-2xl border border-border dark:border-border-dark bg-card dark:bg-card-dark overflow-hidden group hover:shadow-lg transition-all duration-300"
+          transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
+          className="overflow-hidden rounded-[1.7rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm hover:shadow-lg transition-shadow"
         >
-          <div className="h-56 bg-gradient-to-br from-accent/[0.08] via-accent/[0.04] to-accent-dark/[0.08] relative flex items-center justify-center">
-            <span className="absolute top-4 right-4 bg-emerald-500 text-white text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-              Live on YouTube
-            </span>
+          <div className="relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800 via-blue-600 to-cyan-400 md:h-64" aria-hidden="true">
+            <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:22px_22px]" />
+            <div className="absolute h-36 w-36 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-14px_-16px_25px_rgba(12,22,65,.24),inset_10px_10px_20px_rgba(255,255,255,.5),0_20px_38px_rgba(9,20,50,.22)] backdrop-blur-sm md:h-44 md:w-44" />
+            <div className="relative grid h-16 w-16 place-items-center rounded-2xl border border-white/55 bg-white/20 text-white shadow-lg backdrop-blur-md">
+              <Code2 size={31} aria-hidden="true" />
+            </div>
+            <span className="absolute top-5 right-5 rounded-full border border-white/55 bg-emerald-500/90 px-3.5 py-1.5 text-[9px] font-bold uppercase tracking-[.13em] text-white shadow-sm">Live on YouTube</span>
           </div>
-          <div className="p-8">
-            <h2 className="text-2xl font-bold text-text dark:text-text-dark mb-3 tracking-tight">
-              C++ Programming for University Students
-            </h2>
-            <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-4 max-w-2xl leading-relaxed">
-              A structured video course taking students from C++ fundamentals to
-              object-oriented programming mastery
-            </p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {["C++", "University Level", "YouTube", "Free", "Ongoing"].map(
-                (tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-xs font-medium rounded-full bg-surface dark:bg-surface-dark text-text-secondary dark:text-text-secondary-dark border border-border dark:border-border-dark"
-                  >
-                    {tag}
-                  </span>
-                )
-              )}
+          <div className="grid gap-7 p-6 md:grid-cols-[1fr_auto] md:items-end md:p-9">
+            <div>
+              <p className="mb-3 text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">Featured course</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-text dark:text-text-dark mb-3 tracking-tight">C++ Programming for University Students</h2>
+              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-5 max-w-2xl leading-relaxed">A structured video course taking students from C++ fundamentals to object-oriented programming mastery</p>
+              <div className="flex flex-wrap gap-2">
+                {["C++", "University Level", "YouTube", "Free", "Ongoing"].map((tag) => (
+                  <span key={tag} className="rounded-full border border-border dark:border-border-dark bg-surface dark:bg-surface-dark px-3 py-1.5 text-[10px] font-semibold text-text-secondary dark:text-text-secondary-dark">{tag}</span>
+                ))}
+              </div>
             </div>
             <a
               href="https://youtube.com/@ban_tech"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent dark:bg-accent-dark text-white text-sm font-semibold hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-md"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent dark:bg-accent-dark px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:brightness-110 dark:text-text-dark"
             >
-              <Play size={18} />
+              <Play size={17} aria-hidden="true" />
               Watch on YouTube
-              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
-        </motion.div>
+        </motion.article>
       </section>
 
-      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16 md:pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-8 md:py-14" aria-label="Upcoming courses">
+        <div className="mb-7">
+          <p className="mb-3 text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">In development</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-text dark:text-text-dark tracking-tight">Upcoming Courses</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {[
-            {
-              title: "Full-Stack Web Development Bootcamp",
-              subtitle: "React, Node.js, TypeScript, PostgreSQL",
-              badge: "Coming Soon",
-            },
-            {
-              title: "Mobile App Development Bootcamp",
-              subtitle: "Cross-platform iOS and Android development",
-              badge: "Coming Soon",
-            },
-          ].map((course, i) => (
-            <motion.div
-              key={course.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.2 + i * 0.1,
-                ease: [0.25, 0.4, 0.25, 1],
-              }}
-              className="rounded-2xl border border-border dark:border-border-dark bg-card dark:bg-card-dark overflow-hidden group hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <div className="h-48 bg-gradient-to-br from-accent/[0.08] via-accent/[0.04] to-accent-dark/[0.08] relative flex items-center justify-center">
-                <span className="absolute top-4 right-4 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-amber-200 dark:border-amber-800">
-                  {course.badge}
-                </span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-text dark:text-text-dark mb-2 tracking-tight">
-                  {course.title}
-                </h3>
-                <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-6 leading-relaxed">
-                  {course.subtitle}
-                </p>
-                <div className="flex items-center gap-4 mb-6 text-sm text-text-secondary dark:text-text-secondary-dark">
-                  <div className="flex items-center gap-1.5">
-                    <Clock size={16} />
-                    <span>Flexible</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <BarChart size={16} />
-                    <span>All Levels</span>
-                  </div>
+            { title: "Full-Stack Web Development Bootcamp", subtitle: "React, Node.js, TypeScript, PostgreSQL", icon: Layers3, art: "from-orange-500 via-rose-500 to-violet-600" },
+            { title: "Mobile App Development Bootcamp", subtitle: "Cross-platform iOS and Android development", icon: Smartphone, art: "from-teal-500 via-emerald-400 to-lime-200" },
+          ].map((course, index) => {
+            const Icon = course.icon;
+            return (
+              <motion.article
+                key={course.title}
+                initial={false}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-70px" }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm"
+              >
+                <div className={`relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br ${course.art}`} aria-hidden="true">
+                  <div className="absolute h-28 w-28 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm" />
+                  <div className="relative grid h-12 w-12 place-items-center rounded-xl border border-white/55 bg-white/20 text-white shadow-lg backdrop-blur-md"><Icon size={24} aria-hidden="true" /></div>
+                  <span className="absolute top-4 right-4 rounded-full border border-white/50 bg-black/15 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.12em] text-white backdrop-blur-sm">Coming Soon</span>
                 </div>
-                <button className="group w-full py-3 rounded-xl bg-accent dark:bg-accent-dark text-white text-sm font-semibold flex items-center justify-center gap-2 hover:brightness-110 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-sm">
-                  Notify Me
-                  <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+                <div className="p-5 md:p-6">
+                  <h3 className="text-xl font-semibold text-text dark:text-text-dark mb-2 tracking-tight">{course.title}</h3>
+                  <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-5 leading-relaxed">{course.subtitle}</p>
+                  <div className="flex flex-wrap items-center gap-4 mb-5 text-xs text-text-secondary dark:text-text-secondary-dark">
+                    <span className="inline-flex items-center gap-1.5"><Clock size={15} aria-hidden="true" />Flexible</span>
+                    <span className="inline-flex items-center gap-1.5"><BarChart size={15} aria-hidden="true" />All Levels</span>
+                  </div>
+                  <button type="button" disabled aria-disabled="true" className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-xl border border-border dark:border-border-dark bg-surface/70 dark:bg-surface-dark/70 py-3 text-sm font-semibold text-text-secondary/70 dark:text-text-secondary-dark/70">
+                    Notify Me <ArrowRight size={15} aria-hidden="true" />
+                  </button>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
       </section>
     </PageTransition>

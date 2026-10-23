@@ -15,13 +15,17 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-      className={`mb-10 md:mb-12 ${centered ? "text-center" : ""}`}
+      transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
+      className={`mb-8 md:mb-10 ${centered ? "text-center" : ""}`}
     >
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.1]">
+      <p className={`mb-3 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-accent dark:text-accent-dark ${centered ? "justify-center" : ""}`}>
+        <span className="h-1.5 w-1.5 rounded-full bg-coral" aria-hidden="true" />
+        Ban-Tech
+      </p>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.02]">
         {title}
       </h2>
       {subtitle && (

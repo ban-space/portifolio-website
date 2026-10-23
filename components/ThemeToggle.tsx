@@ -11,14 +11,18 @@ export default function ThemeToggle() {
 
   useEffect(() => { startTransition(() => setMounted(true)); }, []);
 
+  const isDark = mounted && theme === "dark";
+
   return (
     <button
+      type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      aria-label="Toggle theme"
-      className="relative w-9 h-9 rounded-lg flex items-center justify-center text-text-secondary dark:text-text-secondary-dark hover:bg-surface dark:hover:bg-surface-dark hover:text-accent dark:hover:text-accent-dark transition-colors"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="relative w-10 h-10 rounded-full flex items-center justify-center text-text-secondary dark:text-text-secondary-dark hover:bg-surface dark:hover:bg-surface-dark hover:text-accent dark:hover:text-accent-dark transition-colors"
     >
       <AnimatePresence mode="wait" initial={false}>
-        {mounted && theme === "dark" ? (
+        {isDark ? (
           <motion.span
             key="sun"
             initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
@@ -26,7 +30,7 @@ export default function ThemeToggle() {
             exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <Sun size={18} />
+            <Sun size={18} aria-hidden="true" />
           </motion.span>
         ) : (
           <motion.span
@@ -36,11 +40,11 @@ export default function ThemeToggle() {
             exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <Moon size={18} />
+            <Moon size={18} aria-hidden="true" />
           </motion.span>
         )}
       </AnimatePresence>
-      {!mounted && <div className="w-[18px] h-[18px]" />}
+      {!mounted && <span className="absolute w-[18px] h-[18px]" aria-hidden="true" />}
     </button>
   );
 }

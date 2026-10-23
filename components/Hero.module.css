@@ -232,6 +232,17 @@
   transform: translateY(-2px);
 }
 
+.secondaryAction:disabled {
+  cursor: not-allowed;
+  opacity: .62;
+}
+
+.secondaryAction:disabled:hover {
+  border-color: rgb(28 32 48 / 30%);
+  background: transparent;
+  transform: none;
+}
+
 .socialLinks {
   display: flex;
   flex-wrap: wrap;

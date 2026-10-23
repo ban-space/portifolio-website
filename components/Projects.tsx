@@ -1,47 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GitBranch, ExternalLink } from "lucide-react";
+import { GitBranch, ExternalLink, ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "Upcoming Project",
-    description:
-      "Project details will be published soon. Stay tuned for something great.",
+    description: "Project details will be published soon. Stay tuned for something great.",
+    art: "from-indigo-500 via-blue-500 to-cyan-300",
+    shape: "rounded-full rotate-12",
   },
   {
     title: "Upcoming Project",
-    description:
-      "Project details will be published soon. Stay tuned for something great.",
+    description: "Project details will be published soon. Stay tuned for something great.",
+    art: "from-orange-400 via-rose-500 to-violet-600",
+    shape: "rounded-[32%] -rotate-12",
   },
   {
     title: "Upcoming Project",
-    description:
-      "Project details will be published soon. Stay tuned for something great.",
+    description: "Project details will be published soon. Stay tuned for something great.",
+    art: "from-lime-300 via-emerald-500 to-blue-600",
+    shape: "rounded-[42%] rotate-45",
   },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 24 },
+  visible: (index: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] },
+    transition: { duration: 0.45, delay: index * 0.08, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] },
   }),
 };
 
 export default function Projects() {
   return (
-    <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-16 md:py-20">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-        className="flex justify-between items-end mb-8"
-      >
+    <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-16 md:py-24">
+      <div className="flex justify-between items-end gap-6 mb-8 md:mb-10">
         <div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.1]">
+          <p className="mb-3 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-accent dark:text-accent-dark">
+            <span className="h-1.5 w-1.5 rounded-full bg-coral" aria-hidden="true" />
+            Selected work
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.04]">
             Featured Projects
           </h2>
           <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-2">
@@ -52,67 +53,68 @@ export default function Projects() {
           href="https://github.com/ban-space"
           target="_blank"
           rel="noopener noreferrer"
-          className="group text-sm font-semibold text-accent dark:text-accent-dark flex items-center gap-1.5 hover:brightness-110 transition-all"
+          className="group hidden sm:inline-flex text-sm font-semibold text-accent dark:text-accent-dark items-center gap-2 hover:brightness-110 transition-all"
         >
           View All Projects
-          <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
         </a>
-      </motion.div>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {projects.map((project, i) => (
-          <motion.div
-            key={i}
-            custom={i}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        {projects.map((project, index) => (
+          <motion.article
+            key={`${project.title}-${index}`}
+            custom={index}
             variants={cardVariants}
-            initial="hidden"
+            initial={false}
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="bg-card dark:bg-card-dark border border-border dark:border-border-dark rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg transition-all duration-300"
+            className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card dark:bg-card-dark shadow-sm hover:shadow-lg transition-shadow duration-300"
           >
-            <div className="h-[200px] flex items-center justify-center relative bg-gradient-to-br from-accent/[0.04] via-accent/[0.08] to-accent/[0.04] dark:from-accent-dark/[0.04] dark:via-accent-dark/[0.08] dark:to-accent-dark/[0.04]">
-              <span className="absolute top-4 left-4 bg-accent/10 text-accent dark:text-accent-dark text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider border border-accent/20">
+            <div className={`relative h-[190px] overflow-hidden bg-gradient-to-br ${project.art}`} aria-hidden="true">
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:22px_22px]" />
+              <div className={`absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 border border-white/70 bg-white/25 shadow-[inset_-12px_-14px_24px_rgba(12,22,65,.2),inset_10px_10px_20px_rgba(255,255,255,.45),0_20px_35px_rgba(9,20,50,.22)] backdrop-blur-sm ${project.shape}`} />
+              <div className="absolute left-[18%] top-[24%] h-8 w-8 rounded-full border border-white/70 bg-white/50 shadow-lg backdrop-blur-sm" />
+              <span className="absolute left-4 top-4 rounded-full border border-white/35 bg-black/15 px-3 py-1 text-[9px] font-bold uppercase tracking-[.14em] text-white backdrop-blur-sm">
                 Coming Soon
               </span>
-              <div className="w-16 h-16 rounded-2xl bg-accent/[0.06] flex items-center justify-center">
-                <GitBranch
-                  size={32}
-                  className="text-accent/30 dark:text-accent-dark/30"
-                />
-              </div>
+              <span className="absolute bottom-4 right-4 text-[10px] font-semibold tracking-[.18em] text-white/85">0{index + 1}</span>
             </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-lg font-bold text-text dark:text-text-dark mb-2">
+            <div className="p-5 md:p-6">
+              <h3 className="text-lg font-bold text-text dark:text-text-dark mb-2 tracking-tight">
                 {project.title}
               </h3>
-              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-6 flex-1 leading-relaxed">
+              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-5 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex justify-between items-center mt-auto border-t border-border dark:border-border-dark pt-4">
-                <div className="flex gap-2">
-                  <span className="bg-surface dark:bg-surface-dark text-text-secondary dark:text-text-secondary-dark text-[10px] px-2 py-1 rounded border border-border dark:border-border-dark font-medium">
-                    TBD
-                  </span>
-                </div>
-                <div className="flex gap-2 text-text-secondary dark:text-text-secondary-dark">
-                  <a
-                    href="https://github.com/ban-space"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent dark:hover:text-accent-dark transition-colors p-1"
-                  >
-                    <GitBranch size={18} />
-                  </a>
-                  <button className="hover:text-accent dark:hover:text-accent-dark transition-colors p-1">
-                    <ExternalLink size={18} />
-                  </button>
-                </div>
+              <div className="flex justify-between items-center border-t border-border dark:border-border-dark pt-4">
+                <span className="bg-surface dark:bg-surface-dark text-text-secondary dark:text-text-secondary-dark text-[10px] px-2.5 py-1 rounded-full border border-border dark:border-border-dark font-semibold uppercase tracking-[.1em]">
+                  TBD
+                </span>
+                <a
+                  href="https://github.com/ban-space"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Ban-Tech on GitHub"
+                  className="grid w-9 h-9 place-items-center rounded-full text-text-secondary dark:text-text-secondary-dark hover:text-accent dark:hover:text-accent-dark hover:bg-surface dark:hover:bg-surface-dark transition-colors"
+                >
+                  <GitBranch size={17} aria-hidden="true" />
+                  <span className="sr-only">Ban-Tech GitHub</span>
+                </a>
               </div>
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
+      <a
+        href="https://github.com/ban-space"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group sm:hidden mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent dark:text-accent-dark"
+      >
+        View All Projects <ExternalLink size={15} aria-hidden="true" />
+      </a>
     </section>
   );
 }

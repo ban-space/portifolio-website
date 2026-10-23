@@ -140,7 +140,13 @@ export default function Hero() {
                   <ArrowRight size={17} aria-hidden="true" />
                 </span>
               </Link>
-              <button type="button" className={styles.secondaryAction}>
+              <button
+                type="button"
+                className={styles.secondaryAction}
+                disabled
+                aria-disabled="true"
+                title="CV document unavailable"
+              >
                 Download CV
                 <Download size={16} aria-hidden="true" />
               </button>

@@ -2,91 +2,105 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Braces, Cpu, Compass } from "lucide-react";
+
+const posts = [
+  {
+    title: "Mastering C++ for Beginners",
+    excerpt: "A comprehensive guide to starting your journey in C++ programming.",
+    category: "C++",
+    date: "May 15, 2024",
+    readTime: "10 min read",
+    icon: Braces,
+    art: "from-[#1f3fa4] via-[#315de8] to-[#8dd6e4]",
+  },
+  {
+    title: "The Future of Artificial Intelligence",
+    excerpt: "Exploring how AI is transforming industries and what developers need to know.",
+    category: "AI",
+    date: "May 12, 2024",
+    readTime: "8 min read",
+    icon: Cpu,
+    art: "from-[#40206f] via-[#8c59db] to-[#e8a0d8]",
+  },
+  {
+    title: "Career Roadmap for Software Engineers",
+    excerpt: "Practical tips and strategies to advance your tech career.",
+    category: "Career",
+    date: "May 10, 2024",
+    readTime: "6 min read",
+    icon: Compass,
+    art: "from-[#df7047] via-[#edaa53] to-[#f5e39c]",
+  },
+];
 
 export default function BlogPreview() {
   return (
-    <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-16 md:py-20">
+    <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-16 md:py-24">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-        className="flex justify-between items-end mb-8"
+        transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
+        className="flex justify-between items-end gap-6 mb-8 md:mb-10"
       >
         <div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.1]">
+          <p className="mb-3 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-accent dark:text-accent-dark">
+            <span className="h-1.5 w-1.5 rounded-full bg-coral" aria-hidden="true" />
+            Writing
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text dark:text-text-dark tracking-tight leading-[1.04]">
             Latest Blog Posts
           </h2>
-          <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-2">
-            Insights and tutorials on technology
-          </p>
+          <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-2">Insights and tutorials on technology</p>
         </div>
         <Link
           href="/blog"
-          className="group text-sm font-semibold text-accent dark:text-accent-dark flex items-center gap-1.5 hover:brightness-110 transition-all"
+          className="group hidden sm:inline-flex text-sm font-semibold text-accent dark:text-accent-dark items-center gap-2"
         >
           View All Posts
-          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          <span className="grid w-8 h-8 place-items-center rounded-full border border-accent/20 dark:border-accent-dark/20 transition-all group-hover:bg-accent group-hover:text-white dark:group-hover:bg-accent-dark dark:group-hover:text-text-dark">
+            <ArrowRight size={14} aria-hidden="true" />
+          </span>
         </Link>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          {
-            title: "Mastering C++ for Beginners",
-            excerpt:
-              "A comprehensive guide to starting your journey in C++ programming.",
-            category: "C++",
-            date: "May 15, 2024",
-            readTime: "10 min read",
-          },
-          {
-            title: "The Future of Artificial Intelligence",
-            excerpt:
-              "Exploring how AI is transforming industries and what developers need to know.",
-            category: "AI",
-            date: "May 12, 2024",
-            readTime: "8 min read",
-          },
-          {
-            title: "Career Roadmap for Software Engineers",
-            excerpt:
-              "Practical tips and strategies to advance your tech career.",
-            category: "Career",
-            date: "May 10, 2024",
-            readTime: "6 min read",
-          },
-        ].map((post, i) => (
-          <motion.article
-            key={post.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.4, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="bg-card dark:bg-card-dark border border-border dark:border-border-dark rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-300"
-          >
-            <div className="h-44 bg-gradient-to-br from-accent/[0.06] via-accent/[0.03] to-accent-dark/[0.06] dark:from-accent-dark/[0.06] dark:via-accent-dark/[0.03] flex items-center justify-center relative">
-              <span className="absolute top-4 left-4 bg-accent/10 text-accent dark:text-accent-dark text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                {post.category}
-              </span>
-            </div>
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-text dark:text-text-dark mb-2 group-hover:text-accent dark:group-hover:text-accent-dark transition-colors leading-snug">
-                {post.title}
-              </h3>
-              <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-4 line-clamp-2 leading-relaxed">
-                {post.excerpt}
-              </p>
-              <div className="flex items-center justify-between text-xs text-text-secondary dark:text-text-secondary-dark mt-auto pt-3 border-t border-border dark:border-border-dark">
-                <span>{post.date}</span>
-                <span>{post.readTime}</span>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        {posts.map((post, index) => {
+          const Icon = post.icon;
+          return (
+            <motion.article
+              key={post.title}
+              initial={false}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.42, delay: index * 0.07, ease: [0.25, 0.4, 0.25, 1] }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+              <div className={`relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br ${post.art}`} aria-hidden="true">
+                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]" />
+                <div className="absolute h-28 w-28 rounded-full border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm transition-transform duration-500 group-hover:scale-110" />
+                <div className="relative grid h-12 w-12 place-items-center rounded-2xl border border-white/50 bg-white/20 text-white shadow-lg backdrop-blur-md">
+                  <Icon size={23} aria-hidden="true" />
+                </div>
+                <span className="absolute left-4 top-4 rounded-full border border-white/35 bg-black/15 px-3 py-1 text-[9px] font-semibold uppercase tracking-[.14em] text-white backdrop-blur-sm">{post.category}</span>
               </div>
-            </div>
-          </motion.article>
-        ))}
+              <div className="p-5 md:p-6">
+                <h3 className="text-lg font-semibold text-text dark:text-text-dark mb-2 tracking-tight leading-snug">{post.title}</h3>
+                <p className="text-sm text-text-secondary dark:text-text-secondary-dark mb-5 line-clamp-2 leading-relaxed">{post.excerpt}</p>
+                <div className="flex items-center justify-between text-[11px] text-text-secondary dark:text-text-secondary-dark mt-auto pt-3 border-t border-border dark:border-border-dark">
+                  <span>{post.date}</span>
+                  <span>{post.readTime}</span>
+                </div>
+              </div>
+            </motion.article>
+          );
+        })}
       </div>
+      <Link href="/blog" className="group sm:hidden mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent dark:text-accent-dark">
+        View All Posts <ArrowRight size={15} aria-hidden="true" />
+      </Link>
     </section>
   );
 }

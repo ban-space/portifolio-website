@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { MotionConfig } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -30,9 +31,11 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          <Navbar />
-          <main className="flex-1 pt-[72px]">{children}</main>
-          <Footer />
+          <MotionConfig reducedMotion="user">
+            <Navbar />
+            <main className="flex-1 pt-[72px]">{children}</main>
+            <Footer />
+          </MotionConfig>
         </ThemeProvider>
       </body>
     </html>
