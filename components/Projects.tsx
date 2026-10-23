@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GitBranch, ExternalLink, ArrowUpRight } from "lucide-react";
+import ParallaxElement from "./ParallaxElement";
 
 const projects = [
   {
@@ -72,10 +73,15 @@ export default function Projects() {
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
             className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card dark:bg-card-dark shadow-sm hover:shadow-lg transition-shadow duration-300"
           >
-            <div className={`relative h-[190px] overflow-hidden bg-gradient-to-br ${project.art}`} aria-hidden="true">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:22px_22px]" />
-              <div className={`absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 border border-white/70 bg-white/25 shadow-[inset_-12px_-14px_24px_rgba(12,22,65,.2),inset_10px_10px_20px_rgba(255,255,255,.45),0_20px_35px_rgba(9,20,50,.22)] backdrop-blur-sm ${project.shape}`} />
-              <div className="absolute left-[18%] top-[24%] h-8 w-8 rounded-full border border-white/70 bg-white/50 shadow-lg backdrop-blur-sm" />
+            <div className="relative h-[190px] overflow-hidden" aria-hidden="true">
+              <ParallaxElement className={`pointer-events-none absolute inset-x-0 -inset-y-20 bg-gradient-to-br ${project.art}`} distance={120} />
+              <ParallaxElement className="pointer-events-none absolute inset-0 opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:22px_22px]" distance={72} />
+              <ParallaxElement className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" distance={144}>
+                <div className={`h-28 w-28 border border-white/70 bg-white/25 shadow-[inset_-12px_-14px_24px_rgba(12,22,65,.2),inset_10px_10px_20px_rgba(255,255,255,.45),0_20px_35px_rgba(9,20,50,.22)] backdrop-blur-sm ${project.shape}`} />
+              </ParallaxElement>
+              <ParallaxElement className="pointer-events-none absolute left-[18%] top-[24%]" distance={92}>
+                <div className="h-8 w-8 rounded-full border border-white/70 bg-white/50 shadow-lg backdrop-blur-sm" />
+              </ParallaxElement>
               <span className="absolute left-4 top-4 rounded-full border border-white/35 bg-black/15 px-3 py-1 text-[9px] font-bold uppercase tracking-[.14em] text-white backdrop-blur-sm">
                 Coming Soon
               </span>

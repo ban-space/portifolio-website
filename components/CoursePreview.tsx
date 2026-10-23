@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Code2, Smartphone } from "lucide-react";
+import ParallaxElement from "./ParallaxElement";
 
 const courses = [
   {
@@ -73,9 +74,12 @@ export default function CoursePreview() {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm hover:shadow-lg transition-all duration-300"
             >
-              <div className={`relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br ${course.art}`} aria-hidden="true">
-                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]" />
-                <div className="absolute h-28 w-28 rounded-[38%] border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm transition-transform duration-500 group-hover:rotate-12" />
+              <div className="relative flex h-44 items-center justify-center overflow-hidden" aria-hidden="true">
+                <ParallaxElement className={`pointer-events-none absolute inset-x-0 -inset-y-20 bg-gradient-to-br ${course.art}`} distance={120} />
+                <ParallaxElement className="pointer-events-none absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]" distance={72} />
+                <ParallaxElement className="pointer-events-none absolute" distance={88}>
+                  <div className="h-28 w-28 rounded-[38%] border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm transition-transform duration-500 group-hover:rotate-12" />
+                </ParallaxElement>
                 <div className="relative grid h-12 w-12 place-items-center rounded-2xl border border-white/50 bg-white/20 text-white shadow-lg backdrop-blur-md">
                   <Icon size={23} aria-hidden="true" />
                 </div>

@@ -82,8 +82,10 @@ export default function Blog() {
       />
 
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-8 md:py-12" aria-label="Find articles">
-        <div className="flex flex-col gap-5 rounded-[1.5rem] border border-border dark:border-border-dark bg-card/75 dark:bg-card-dark/75 p-5 md:p-6 shadow-sm">
-          <label htmlFor="article-search" className="sr-only">Search articles</label>
+        <div className="relative isolate overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark shadow-sm">
+          <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-card/75 dark:bg-card-dark/75" distance={64} />
+          <div className="relative z-10 flex flex-col gap-5 p-5 md:p-6">
+            <label htmlFor="article-search" className="sr-only">Search articles</label>
           <div className="relative max-w-xl">
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary dark:text-text-secondary-dark" aria-hidden="true" />
             <input
@@ -115,9 +117,10 @@ export default function Blog() {
               );
             })}
           </div>
-          <p className="text-xs text-text-secondary dark:text-text-secondary-dark" aria-live="polite">
-            {filteredPosts.length} {filteredPosts.length === 1 ? "article" : "articles"}
-          </p>
+            <p className="text-xs text-text-secondary dark:text-text-secondary-dark" aria-live="polite">
+              {filteredPosts.length} {filteredPosts.length === 1 ? "article" : "articles"}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -128,10 +131,11 @@ export default function Blog() {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
-              className={`relative flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[1.7rem] bg-gradient-to-br ${featuredPost.art} p-6 md:col-span-8 md:p-9`}
+              className="relative flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[1.7rem] p-6 md:col-span-8 md:p-9"
             >
+              <ParallaxElement className={`pointer-events-none absolute -inset-x-8 -inset-y-28 bg-gradient-to-br ${featuredPost.art}`} distance={120} />
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:24px_24px]" aria-hidden="true" />
-              <ParallaxElement className="absolute right-[10%] top-[10%] grid h-40 w-40 place-items-center rounded-full border border-white/60 bg-white/20 shadow-[inset_-14px_-18px_30px_rgba(12,22,65,.24),inset_10px_10px_22px_rgba(255,255,255,.5),0_25px_48px_rgba(9,20,50,.24)] backdrop-blur-sm md:h-52 md:w-52" distance={24}>
+              <ParallaxElement className="absolute right-[10%] top-[10%] grid h-40 w-40 place-items-center rounded-full border border-white/60 bg-white/20 shadow-[inset_-14px_-18px_30px_rgba(12,22,65,.24),inset_10px_10px_22px_rgba(255,255,255,.5),0_25px_48px_rgba(9,20,50,.24)] backdrop-blur-sm md:h-52 md:w-52" distance={80}>
                 {(() => { const Icon = featuredPost.icon; return <Icon size={58} className="text-white/90" aria-hidden="true" />; })()}
               </ParallaxElement>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" aria-hidden="true" />
@@ -159,8 +163,9 @@ export default function Blog() {
                   initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.42, delay: index * 0.06, ease: [0.25, 0.4, 0.25, 1] }}
-                  className="group relative overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 p-5 shadow-sm hover:shadow-md transition-all"
+                  className="group relative overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark p-5 shadow-sm hover:shadow-md transition-all"
                 >
+                  <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-card/85 dark:bg-card-dark/90" distance={64} />
                   <div className={`absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br ${post.art} opacity-15 blur-sm transition-transform duration-500 group-hover:scale-125`} aria-hidden="true" />
                   <span className="relative inline-flex rounded-full bg-accent/10 dark:bg-accent-dark/10 px-3 py-1 text-[9px] font-bold uppercase tracking-[.13em] text-accent dark:text-accent-dark">{post.category}</span>
                   <h3 className="relative mt-4 text-lg font-semibold leading-snug tracking-tight text-text dark:text-text-dark">{post.title}</h3>
@@ -184,9 +189,11 @@ export default function Blog() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.4, delay: index * 0.06 }}
-                    className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm"
+                    className="relative overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark shadow-sm"
                   >
-                    <div className={`relative flex h-36 items-center justify-center overflow-hidden bg-gradient-to-br ${post.art}`} aria-hidden="true">
+                    <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-card/85 dark:bg-card-dark/90" distance={56} />
+                    <div className="relative z-10 flex h-36 items-center justify-center overflow-hidden" aria-hidden="true">
+                      <ParallaxElement className={`pointer-events-none absolute -inset-x-8 -inset-y-20 bg-gradient-to-br ${post.art}`} distance={88} />
                       <div className="absolute h-24 w-24 rounded-full border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm" />
                       <Icon size={25} className="relative text-white" aria-hidden="true" />
                       <span className="absolute left-4 top-4 rounded-full border border-white/35 bg-black/15 px-3 py-1 text-[9px] font-bold uppercase tracking-[.13em] text-white">{post.category}</span>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { School, Users, Code, Briefcase } from "lucide-react";
+import ParallaxElement from "./ParallaxElement";
 
 const statsData = [
   { icon: School, value: "3+", label: "Years Learning Technology" },
@@ -24,8 +25,12 @@ export default function Stats() {
               viewport={{ once: true, margin: "-70px" }}
               transition={{ duration: 0.45, delay: index * 0.07, ease: [0.25, 0.4, 0.25, 1] }}
               whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className="relative overflow-hidden rounded-[1.35rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="relative overflow-hidden rounded-[1.35rem] border border-border dark:border-border-dark p-4 sm:p-5 md:p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
+              <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-12 bg-card/85 dark:bg-card-dark/90" distance={96}>
+                <div className="absolute -right-8 -top-10 h-36 w-36 rounded-full bg-gradient-to-br from-accent/18 via-coral/12 to-transparent blur-2xl" />
+              </ParallaxElement>
+              <div className="relative z-10">
               <span className="absolute top-0 left-5 right-5 h-px bg-gradient-to-r from-transparent via-accent/40 dark:via-accent-dark/40 to-transparent" aria-hidden="true" />
               <div className="flex flex-col gap-4">
                 <span className="grid w-10 h-10 place-items-center rounded-xl bg-accent/10 dark:bg-accent-dark/10 text-accent dark:text-accent-dark">
@@ -37,6 +42,7 @@ export default function Stats() {
                     {stat.label}
                   </p>
                 </div>
+              </div>
               </div>
             </motion.div>
           );

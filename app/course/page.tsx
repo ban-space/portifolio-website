@@ -24,9 +24,10 @@ export default function Course() {
           transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
           className="overflow-hidden rounded-[1.7rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm hover:shadow-lg transition-shadow"
         >
-          <div className="relative flex h-52 items-center justify-center overflow-hidden bg-gradient-to-br from-blue-800 via-blue-600 to-cyan-400 md:h-64" aria-hidden="true">
+          <div className="relative flex h-52 items-center justify-center overflow-hidden md:h-64" aria-hidden="true">
+            <ParallaxElement className="pointer-events-none absolute -inset-x-8 -inset-y-28 bg-gradient-to-br from-blue-800 via-blue-600 to-cyan-400" distance={112} />
             <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:22px_22px]" />
-            <ParallaxElement className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" distance={20}>
+            <ParallaxElement className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" distance={76}>
               <div className="h-36 w-36 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-14px_-16px_25px_rgba(12,22,65,.24),inset_10px_10px_20px_rgba(255,255,255,.5),0_20px_38px_rgba(9,20,50,.22)] backdrop-blur-sm md:h-44 md:w-44" />
             </ParallaxElement>
             <div className="relative grid h-16 w-16 place-items-center rounded-2xl border border-white/55 bg-white/20 text-white shadow-lg backdrop-blur-md">
@@ -79,8 +80,11 @@ export default function Course() {
                 transition={{ duration: 0.4, delay: index * 0.06 }}
                 className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm"
               >
-                <div className={`relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br ${course.art}`} aria-hidden="true">
-                  <div className="absolute h-28 w-28 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm" />
+                <div className="relative flex h-44 items-center justify-center overflow-hidden" aria-hidden="true">
+                  <ParallaxElement className={`pointer-events-none absolute -inset-x-8 -inset-y-24 bg-gradient-to-br ${course.art}`} distance={88} />
+                  <ParallaxElement className="pointer-events-none absolute" distance={64}>
+                    <div className="h-28 w-28 rotate-12 rounded-[35%] border border-white/70 bg-white/20 shadow-[inset_-10px_-12px_22px_rgba(19,26,44,.22),inset_8px_7px_16px_rgba(255,255,255,.5),0_18px_30px_rgba(14,20,45,.18)] backdrop-blur-sm" />
+                  </ParallaxElement>
                   <div className="relative grid h-12 w-12 place-items-center rounded-xl border border-white/55 bg-white/20 text-white shadow-lg backdrop-blur-md"><Icon size={24} aria-hidden="true" /></div>
                   <span className="absolute top-4 right-4 rounded-full border border-white/50 bg-black/15 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.12em] text-white backdrop-blur-sm">Coming Soon</span>
                 </div>

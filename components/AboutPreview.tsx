@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import ParallaxElement from "./ParallaxElement";
 
 export default function AboutPreview() {
   return (
@@ -16,8 +17,10 @@ export default function AboutPreview() {
           transition={{ duration: 0.55, ease: [0.25, 0.4, 0.25, 1] }}
           className="relative mx-auto w-full max-w-[460px]"
         >
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent/14 via-transparent to-coral/12 blur-2xl" aria-hidden="true" />
-          <div className="relative aspect-[4/4.3] overflow-hidden rounded-[1.8rem] border border-border dark:border-border-dark bg-gradient-to-br from-surface to-card dark:from-surface-dark dark:to-card-dark shadow-lg">
+          <ParallaxElement className="pointer-events-none absolute -inset-6" distance={84}>
+            <div className="h-full w-full rounded-[2rem] bg-gradient-to-br from-accent/18 via-transparent to-coral/16 blur-2xl" />
+          </ParallaxElement>
+          <ParallaxElement className="relative aspect-[4/4.3] overflow-hidden rounded-[1.8rem] border border-border dark:border-border-dark bg-gradient-to-br from-surface to-card dark:from-surface-dark dark:to-card-dark shadow-lg" distance={112} decorative={false}>
             <div className="absolute inset-x-8 top-8 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" aria-hidden="true" />
             <div className="absolute -right-7 top-10 h-24 w-24 rounded-full border border-accent/20 dark:border-accent-dark/20" aria-hidden="true" />
             <Image
@@ -31,7 +34,7 @@ export default function AboutPreview() {
               <Sparkles size={14} className="text-coral" aria-hidden="true" />
               Ban-Tech
             </div>
-          </div>
+          </ParallaxElement>
         </motion.div>
 
         <motion.div

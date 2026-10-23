@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import ParallaxElement from "./ParallaxElement";
 import styles from "./PageHeader.module.css";
 
 type PageVariant = "about" | "services" | "blog" | "course" | "contact";
@@ -37,10 +38,16 @@ export default function PageHeader({
         </div>
 
         <div className={styles.visual} aria-hidden="true">
-          <div className={styles.orbit} />
-          <div className={styles.orbitInner} />
-          <div className={styles.sphere} />
-          <span className={styles.sphereDot} />
+          <ParallaxElement className="pointer-events-none absolute inset-0 grid place-items-center" distance={144}>
+            <div className={styles.orbit} />
+            <div className={styles.orbitInner} />
+          </ParallaxElement>
+          <ParallaxElement className="pointer-events-none absolute inset-0 grid place-items-center" distance={112}>
+            <div className={styles.sphere} />
+          </ParallaxElement>
+          <ParallaxElement className="pointer-events-none absolute inset-0" distance={80}>
+            <span className={styles.sphereDot} />
+          </ParallaxElement>
           <span className={styles.visualMark}>BT&nbsp; / &nbsp;01</span>
         </div>
       </div>

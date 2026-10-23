@@ -57,6 +57,11 @@ export default function Hero() {
     [0, 1],
     reduceMotion ? [0, 0] : [0, 78],
   );
+  const codeLift = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, 72],
+  );
   const imageX = useTransform(pointerX, [-1, 1], [13, -13]);
   const imageY = useTransform(pointerY, [-1, 1], [10, -10]);
 
@@ -104,6 +109,47 @@ export default function Hero() {
               className={styles.artwork}
             />
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          className={styles.devWindow}
+          style={{ y: codeLift }}
+          aria-hidden="true"
+        >
+          <div className={styles.devTopbar}>
+            <span className={styles.devDots}>
+              <i />
+              <i />
+              <i />
+            </span>
+            <span className={styles.devFilename}>src/builder.tsx</span>
+            <span className={styles.devLanguage}>TSX</span>
+          </div>
+          <pre className={styles.devCode}>
+            <code>
+              <span className={styles.codeLine}>
+                <span className={styles.tokenKeyword}>const</span>{" "}
+                <span className={styles.tokenVariable}>builder</span> = {"{"}
+              </span>
+              <span className={`${styles.codeLine} ${styles.codeIndent}`}>
+                <span className={styles.tokenProperty}>focus</span>: {" "}
+                <span className={styles.tokenString}>&quot;software&quot;</span>,
+              </span>
+              <span className={`${styles.codeLine} ${styles.codeIndent}`}>
+                <span className={styles.tokenProperty}>mission</span>: {" "}
+                <span className={styles.tokenString}>&quot;solve problems&quot;</span>,
+              </span>
+              <span className={`${styles.codeLine} ${styles.codeIndent}`}>
+                <span className={styles.tokenProperty}>ships</span>: {" "}
+                <span className={styles.tokenBoolean}>true</span>,
+              </span>
+              <span className={styles.codeLine}>{"};"}</span>
+            </code>
+          </pre>
+          <div className={styles.devFooter}>
+            <span><span className={styles.devPrompt}>›</span> pnpm dev</span>
+            <span className={styles.devBranch}>main</span>
+          </div>
         </motion.div>
 
         <div className={styles.heroCopy}>

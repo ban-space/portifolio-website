@@ -42,10 +42,10 @@ export default function Contact() {
             initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.42, ease: [0.25, 0.4, 0.25, 1] }}
-            className="relative overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark bg-card/80 dark:bg-card-dark/85 p-6 md:p-8 shadow-sm lg:col-span-4"
+            className="relative overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark p-6 md:p-8 shadow-sm lg:col-span-4"
           >
-            <ParallaxElement className="pointer-events-none absolute -right-14 -top-14" distance={14}>
-              <div className="h-44 w-44 rounded-full border border-accent/10 dark:border-accent-dark/10" />
+            <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-24 bg-card/80 dark:bg-card-dark/85" distance={120}>
+              <div className="absolute -right-12 -top-12 h-60 w-60 rounded-full border border-accent/12 bg-gradient-to-br from-accent/12 to-coral/10 blur-sm" />
             </ParallaxElement>
             <div className="relative z-10">
               <p className="mb-3 text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">Contact details</p>
@@ -78,9 +78,14 @@ export default function Contact() {
             initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.42, delay: 0.06, ease: [0.25, 0.4, 0.25, 1] }}
-            className="rounded-[1.6rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 p-5 md:p-8 lg:p-10 shadow-sm lg:col-span-8"
+            className="relative overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark p-5 md:p-8 lg:p-10 shadow-sm lg:col-span-8"
           >
-            <div className="mb-6">
+            <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-24 bg-card/85 dark:bg-card-dark/90" distance={96}>
+              <div className="absolute -right-16 -top-20 h-72 w-72 rounded-full border border-accent/10 bg-gradient-to-br from-accent/12 to-coral/8 blur-xl" />
+              <div className="absolute -bottom-20 left-[28%] h-48 w-48 rounded-full bg-gradient-to-br from-coral/10 to-accent/8 blur-3xl" />
+            </ParallaxElement>
+            <div className="relative z-10">
+              <div className="mb-6">
               <p className="mb-2 text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">Send a message</p>
               <h2 className="text-xl font-semibold text-text dark:text-text-dark tracking-tight">Tell me what you&apos;re building</h2>
             </div>
@@ -113,6 +118,7 @@ export default function Contact() {
                 </p>
               </div>
             </form>
+            </div>
           </motion.div>
         </div>
       </section>

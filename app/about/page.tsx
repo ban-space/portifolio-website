@@ -63,10 +63,10 @@ export default function About() {
             transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
             className="lg:col-span-5 relative"
           >
-            <ParallaxElement className="pointer-events-none absolute -inset-5" distance={22}>
+            <ParallaxElement className="pointer-events-none absolute -inset-5" distance={44}>
               <div className="h-full w-full rounded-[2rem] bg-gradient-to-br from-accent/15 via-transparent to-coral/12 blur-2xl" />
             </ParallaxElement>
-            <div className="relative mx-auto aspect-[4/4.6] w-full max-w-[400px] overflow-hidden rounded-[1.8rem] border border-border dark:border-border-dark bg-gradient-to-br from-surface to-card dark:from-surface-dark dark:to-card-dark shadow-lg">
+            <ParallaxElement className="relative mx-auto aspect-[4/4.6] w-full max-w-[400px] overflow-hidden rounded-[1.8rem] border border-border dark:border-border-dark bg-gradient-to-br from-surface to-card dark:from-surface-dark dark:to-card-dark shadow-lg" distance={110} decorative={false}>
               <div className="absolute right-7 top-7 h-24 w-24 rounded-full border border-accent/20 dark:border-accent-dark/20" aria-hidden="true" />
               <Image
                 src="/about.png"
@@ -78,7 +78,7 @@ export default function About() {
               <div className="absolute bottom-4 left-4 grid h-10 w-10 place-items-center rounded-full border border-white/70 bg-card/80 text-coral shadow-sm backdrop-blur-xl dark:border-white/15 dark:bg-card-dark/80">
                 <Sparkles size={17} aria-hidden="true" />
               </div>
-            </div>
+            </ParallaxElement>
           </motion.div>
 
           <motion.div
@@ -105,10 +105,15 @@ export default function About() {
                 { label: "Degree", value: "Third Year Software Engineering" },
                 { label: "Focus", value: "Building, Teaching and Innovating" },
               ].map((item, index) => (
-                <div key={item.label} className="relative overflow-hidden rounded-2xl border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/85 p-4 shadow-sm">
-                  <span className={`absolute left-0 top-0 h-1 w-full ${index === 1 ? "bg-coral" : "bg-accent dark:bg-accent-dark"}`} aria-hidden="true" />
-                  <span className="text-[9px] font-bold uppercase tracking-[.14em] text-accent dark:text-accent-dark">{item.label}</span>
-                  <p className="mt-2 text-sm font-semibold leading-snug text-text dark:text-text-dark">{item.value}</p>
+                <div key={item.label} className="relative overflow-hidden rounded-2xl border border-border dark:border-border-dark p-4 shadow-sm">
+                  <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-12 bg-card/85 dark:bg-card-dark/85" distance={64}>
+                    <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-accent/20 to-coral/14 blur-xl" />
+                  </ParallaxElement>
+                  <div className="relative z-10">
+                    <span className={`absolute left-0 top-0 h-1 w-full ${index === 1 ? "bg-coral" : "bg-accent dark:bg-accent-dark"}`} aria-hidden="true" />
+                    <span className="text-[9px] font-bold uppercase tracking-[.14em] text-accent dark:text-accent-dark">{item.label}</span>
+                    <p className="mt-2 text-sm font-semibold leading-snug text-text dark:text-text-dark">{item.value}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -128,13 +133,18 @@ export default function About() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.42, delay: index * 0.07, ease: [0.25, 0.4, 0.25, 1] }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 p-6 md:p-7 shadow-sm hover:shadow-lg transition-all duration-300"
+                className="group relative overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark p-6 md:p-7 shadow-sm hover:shadow-lg transition-all duration-300"
               >
-                <span className="grid w-12 h-12 place-items-center rounded-[1rem] bg-gradient-to-br from-accent/12 to-coral/12 text-accent dark:text-accent-dark transition-transform group-hover:-rotate-6 group-hover:scale-105">
-                  <Icon size={22} aria-hidden="true" />
-                </span>
-                <h3 className="text-xl font-semibold text-text dark:text-text-dark mt-5 mb-2 tracking-tight">{trait.title}</h3>
-                <p className="text-sm text-text-secondary dark:text-text-secondary-dark leading-relaxed">{trait.description}</p>
+                <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-card/85 dark:bg-card-dark/90" distance={88}>
+                  <div className="absolute -right-10 -top-8 h-44 w-44 rounded-full bg-gradient-to-br from-accent/16 via-coral/12 to-transparent blur-2xl" />
+                </ParallaxElement>
+                <div className="relative z-10">
+                  <span className="grid w-12 h-12 place-items-center rounded-[1rem] bg-gradient-to-br from-accent/12 to-coral/12 text-accent dark:text-accent-dark transition-transform group-hover:-rotate-6 group-hover:scale-105">
+                    <Icon size={22} aria-hidden="true" />
+                  </span>
+                  <h3 className="text-xl font-semibold text-text dark:text-text-dark mt-5 mb-2 tracking-tight">{trait.title}</h3>
+                  <p className="text-sm text-text-secondary dark:text-text-secondary-dark leading-relaxed">{trait.description}</p>
+                </div>
               </motion.article>
             );
           })}
@@ -157,10 +167,15 @@ export default function About() {
               <div className="flex justify-center pt-1">
                 <span className="relative z-10 h-3.5 w-3.5 rounded-full border-[3px] border-card bg-accent shadow-[0_0_0_1px_var(--color-accent)] dark:border-bg-dark dark:bg-accent-dark dark:shadow-[0_0_0_1px_var(--color-accent-dark)]" aria-hidden="true" />
               </div>
-              <div className="rounded-[1.35rem] border border-border dark:border-border-dark bg-card/75 dark:bg-card-dark/80 p-5 md:p-6 shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md">
-                <span className="text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">{item.period}</span>
-                <h3 className="text-lg font-semibold text-text dark:text-text-dark mt-1 tracking-tight">{item.title}</h3>
-                <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-3 leading-relaxed">{item.description}</p>
+              <div className="relative overflow-hidden rounded-[1.35rem] border border-border dark:border-border-dark p-5 md:p-6 shadow-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-md">
+                <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-24 bg-card/75 dark:bg-card-dark/80" distance={140}>
+                  <div className="absolute -right-10 top-1/3 h-40 w-40 rounded-full border border-accent/12 bg-gradient-to-br from-accent/12 to-coral/8 blur-sm" />
+                </ParallaxElement>
+                <div className="relative z-10">
+                  <span className="text-[10px] font-bold uppercase tracking-[.15em] text-accent dark:text-accent-dark">{item.period}</span>
+                  <h3 className="text-lg font-semibold text-text dark:text-text-dark mt-1 tracking-tight">{item.title}</h3>
+                  <p className="text-sm text-text-secondary dark:text-text-secondary-dark mt-3 leading-relaxed">{item.description}</p>
+                </div>
               </div>
             </motion.article>
           ))}
