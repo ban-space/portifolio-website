@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Code2, Smartphone } from "lucide-react";
 import ParallaxElement from "./ParallaxElement";
+import ScrollSideReveal from "./ScrollSideReveal";
 
 const courses = [
   {
@@ -38,13 +39,8 @@ const courses = [
 export default function CoursePreview() {
   return (
     <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-16 md:py-24">
-      <motion.div
-        initial={false}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
-        className="flex justify-between items-end gap-6 mb-8 md:mb-10"
-      >
+      <ScrollSideReveal direction="right" className="mb-8 md:mb-10">
+        <div className="flex justify-between items-end gap-6">
         <div>
           <p className="mb-3 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-accent dark:text-accent-dark">
             <span className="h-1.5 w-1.5 rounded-full bg-coral" aria-hidden="true" />
@@ -59,20 +55,17 @@ export default function CoursePreview() {
             <ArrowRight size={14} aria-hidden="true" />
           </span>
         </Link>
-      </motion.div>
+        </div>
+      </ScrollSideReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
         {courses.map((course, index) => {
           const Icon = course.icon;
           return (
+            <ScrollSideReveal key={course.title} direction={index % 2 === 0 ? "left" : "right"} className="h-full">
             <motion.article
-              key={course.title}
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.42, delay: index * 0.07, ease: [0.25, 0.4, 0.25, 1] }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm hover:shadow-lg transition-all duration-300"
+              className="h-full overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card/85 dark:bg-card-dark/90 shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="relative flex h-44 items-center justify-center overflow-hidden" aria-hidden="true">
                 <ParallaxElement className={`pointer-events-none absolute inset-x-0 -inset-y-20 bg-gradient-to-br ${course.art}`} distance={120} />
@@ -99,6 +92,7 @@ export default function CoursePreview() {
                 )}
               </div>
             </motion.article>
+            </ScrollSideReveal>
           );
         })}
       </div>

@@ -5,6 +5,7 @@ import { ArrowRight, Clock, BarChart, Play, Code2, Layers3, Smartphone } from "l
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
 import ParallaxElement from "@/components/ParallaxElement";
+import ScrollSideReveal from "@/components/ScrollSideReveal";
 
 export default function Course() {
   return (
@@ -18,6 +19,7 @@ export default function Course() {
       />
 
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-7 md:py-10" aria-label="Featured course">
+        <ScrollSideReveal direction="left">
         <motion.article
           initial={false}
           animate={{ opacity: 1, y: 0 }}
@@ -58,6 +60,7 @@ export default function Course() {
             </a>
           </div>
         </motion.article>
+        </ScrollSideReveal>
       </section>
 
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-8 md:py-14" aria-label="Upcoming courses">
@@ -71,9 +74,9 @@ export default function Course() {
             { title: "Mobile App Development Bootcamp", subtitle: "Cross-platform iOS and Android development", icon: Smartphone, art: "from-teal-500 via-emerald-400 to-lime-200" },
           ].map((course, index) => {
             const Icon = course.icon;
-            return (
-              <motion.article
-                key={course.title}
+              return (
+                <ScrollSideReveal key={course.title} direction={index % 2 === 0 ? "left" : "right"} className="h-full">
+                <motion.article
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-70px" }}
@@ -99,8 +102,9 @@ export default function Course() {
                     Notify Me <ArrowRight size={15} aria-hidden="true" />
                   </button>
                 </div>
-              </motion.article>
-            );
+                </motion.article>
+                </ScrollSideReveal>
+              );
           })}
         </div>
       </section>

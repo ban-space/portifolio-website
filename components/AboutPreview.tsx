@@ -2,21 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import ParallaxElement from "./ParallaxElement";
+import ScrollSideReveal from "./ScrollSideReveal";
 
 export default function AboutPreview() {
   return (
     <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-16 md:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.25, 0.4, 0.25, 1] }}
-          className="relative mx-auto w-full max-w-[460px]"
-        >
+        <ScrollSideReveal direction="left" className="relative mx-auto w-full max-w-[460px]">
           <ParallaxElement className="pointer-events-none absolute -inset-6" distance={84}>
             <div className="h-full w-full rounded-[2rem] bg-gradient-to-br from-accent/18 via-transparent to-coral/16 blur-2xl" />
           </ParallaxElement>
@@ -35,15 +29,9 @@ export default function AboutPreview() {
               Ban-Tech
             </div>
           </ParallaxElement>
-        </motion.div>
+        </ScrollSideReveal>
 
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.25, 0.4, 0.25, 1] }}
-          className="flex flex-col gap-6"
-        >
+        <ScrollSideReveal direction="right" className="flex flex-col gap-6">
           <div>
             <p className="mb-3 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-accent dark:text-accent-dark">
               <span className="h-1.5 w-1.5 rounded-full bg-coral" aria-hidden="true" />
@@ -77,7 +65,7 @@ export default function AboutPreview() {
               <ArrowRight size={16} aria-hidden="true" />
             </span>
           </Link>
-        </motion.div>
+        </ScrollSideReveal>
       </div>
     </section>
   );

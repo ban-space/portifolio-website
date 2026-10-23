@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { School, Users, Code, Briefcase } from "lucide-react";
 import ParallaxElement from "./ParallaxElement";
+import ScrollSideReveal from "./ScrollSideReveal";
 
 const statsData = [
   { icon: School, value: "3+", label: "Years Learning Technology" },
@@ -18,8 +19,13 @@ export default function Stats() {
         {statsData.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <motion.div
+            <ScrollSideReveal
               key={stat.label}
+              direction={index % 2 === 0 ? "left" : "right"}
+              distance={52}
+              className="h-full"
+            >
+            <motion.div
               initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-70px" }}
@@ -45,6 +51,7 @@ export default function Stats() {
               </div>
               </div>
             </motion.div>
+            </ScrollSideReveal>
           );
         })}
       </div>

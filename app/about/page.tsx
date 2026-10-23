@@ -7,6 +7,7 @@ import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
 import SectionHeading from "@/components/SectionHeading";
 import ParallaxElement from "@/components/ParallaxElement";
+import ScrollSideReveal from "@/components/ScrollSideReveal";
 
 const traits = [
   {
@@ -56,13 +57,7 @@ export default function About() {
 
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-10 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-            className="lg:col-span-5 relative"
-          >
+          <ScrollSideReveal direction="left" className="lg:col-span-5 relative">
             <ParallaxElement className="pointer-events-none absolute -inset-5" distance={44}>
               <div className="h-full w-full rounded-[2rem] bg-gradient-to-br from-accent/15 via-transparent to-coral/12 blur-2xl" />
             </ParallaxElement>
@@ -79,15 +74,9 @@ export default function About() {
                 <Sparkles size={17} aria-hidden="true" />
               </div>
             </ParallaxElement>
-          </motion.div>
+          </ScrollSideReveal>
 
-          <motion.div
-            initial={false}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-            className="lg:col-span-7 flex flex-col gap-7"
-          >
+          <ScrollSideReveal direction="right" className="lg:col-span-7 flex flex-col gap-7">
             <div>
               <p className="mb-3 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.16em] text-accent dark:text-accent-dark">
                 <span className="h-1.5 w-1.5 rounded-full bg-coral" aria-hidden="true" />
@@ -105,7 +94,8 @@ export default function About() {
                 { label: "Degree", value: "Third Year Software Engineering" },
                 { label: "Focus", value: "Building, Teaching and Innovating" },
               ].map((item, index) => (
-                <div key={item.label} className="relative overflow-hidden rounded-2xl border border-border dark:border-border-dark p-4 shadow-sm">
+                <ScrollSideReveal key={item.label} direction={index % 2 === 0 ? "left" : "right"} distance={48} className="h-full">
+                <div className="relative h-full overflow-hidden rounded-2xl border border-border dark:border-border-dark p-4 shadow-sm">
                   <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-12 bg-card/85 dark:bg-card-dark/85" distance={64}>
                     <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-accent/20 to-coral/14 blur-xl" />
                   </ParallaxElement>
@@ -115,9 +105,10 @@ export default function About() {
                     <p className="mt-2 text-sm font-semibold leading-snug text-text dark:text-text-dark">{item.value}</p>
                   </div>
                 </div>
+                </ScrollSideReveal>
               ))}
             </div>
-          </motion.div>
+          </ScrollSideReveal>
         </div>
       </section>
 
@@ -125,9 +116,9 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {traits.map((trait, index) => {
             const Icon = trait.icon;
-            return (
-              <motion.article
-                key={trait.title}
+              return (
+                <ScrollSideReveal key={trait.title} direction={index % 2 === 0 ? "left" : "right"} className="h-full">
+                <motion.article
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -145,19 +136,22 @@ export default function About() {
                   <h3 className="text-xl font-semibold text-text dark:text-text-dark mt-5 mb-2 tracking-tight">{trait.title}</h3>
                   <p className="text-sm text-text-secondary dark:text-text-secondary-dark leading-relaxed">{trait.description}</p>
                 </div>
-              </motion.article>
-            );
+                </motion.article>
+                </ScrollSideReveal>
+              );
           })}
         </div>
       </section>
 
       <section className="max-w-[880px] mx-auto px-6 lg:px-10 py-10 md:py-20">
-        <SectionHeading title="My Journey" centered />
+        <ScrollSideReveal direction="left" className="mb-6">
+          <SectionHeading title="My Journey" centered />
+        </ScrollSideReveal>
         <div className="relative">
           <div className="absolute left-5 top-2 bottom-2 w-px -translate-x-1/2 bg-gradient-to-b from-coral via-accent/60 to-transparent dark:via-accent-dark/60" aria-hidden="true" />
           {timeline.map((item, index) => (
+            <ScrollSideReveal key={item.period} direction={index % 2 === 0 ? "left" : "right"}>
             <motion.article
-              key={item.period}
               initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -178,6 +172,7 @@ export default function About() {
                 </div>
               </div>
             </motion.article>
+            </ScrollSideReveal>
           ))}
         </div>
       </section>

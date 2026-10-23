@@ -1,11 +1,11 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone, MapPin, Send, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
 import ParallaxElement from "@/components/ParallaxElement";
+import ScrollSideReveal from "@/components/ScrollSideReveal";
 
 function openEmailDraft(event: FormEvent<HTMLFormElement>) {
   event.preventDefault();
@@ -38,12 +38,8 @@ export default function Contact() {
 
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-8 md:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-stretch">
-          <motion.aside
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.42, ease: [0.25, 0.4, 0.25, 1] }}
-            className="relative overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark p-6 md:p-8 shadow-sm lg:col-span-4"
-          >
+          <ScrollSideReveal direction="left" className="h-full lg:col-span-4">
+          <aside className="relative h-full overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark p-6 md:p-8 shadow-sm">
             <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-24 bg-card/80 dark:bg-card-dark/85" distance={120}>
               <div className="absolute -right-12 -top-12 h-60 w-60 rounded-full border border-accent/12 bg-gradient-to-br from-accent/12 to-coral/10 blur-sm" />
             </ParallaxElement>
@@ -72,14 +68,11 @@ export default function Contact() {
                 <span>Find me on Telegram at @ban_devs</span>
               </div>
             </div>
-          </motion.aside>
+          </aside>
+          </ScrollSideReveal>
 
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.42, delay: 0.06, ease: [0.25, 0.4, 0.25, 1] }}
-            className="relative overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark p-5 md:p-8 lg:p-10 shadow-sm lg:col-span-8"
-          >
+          <ScrollSideReveal direction="right" className="h-full lg:col-span-8">
+          <div className="relative h-full overflow-hidden rounded-[1.6rem] border border-border dark:border-border-dark p-5 md:p-8 lg:p-10 shadow-sm">
             <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-24 bg-card/85 dark:bg-card-dark/90" distance={96}>
               <div className="absolute -right-16 -top-20 h-72 w-72 rounded-full border border-accent/10 bg-gradient-to-br from-accent/12 to-coral/8 blur-xl" />
               <div className="absolute -bottom-20 left-[28%] h-48 w-48 rounded-full bg-gradient-to-br from-coral/10 to-accent/8 blur-3xl" />
@@ -119,7 +112,8 @@ export default function Contact() {
               </div>
             </form>
             </div>
-          </motion.div>
+          </div>
+          </ScrollSideReveal>
         </div>
       </section>
     </PageTransition>

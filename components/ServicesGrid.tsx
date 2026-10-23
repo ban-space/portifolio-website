@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import ParallaxElement from "@/components/ParallaxElement";
+import ScrollSideReveal from "@/components/ScrollSideReveal";
 
 const services = [
   { icon: Globe, title: "Web Development", description: "Modern responsive and high-performance websites and web applications" },
@@ -33,12 +34,12 @@ export default function ServicesGrid({ showHeading = true }: ServicesGridProps) 
         {services.map((service, index) => {
           const Icon = service.icon;
           return (
-            <motion.article
+            <ScrollSideReveal
               key={service.title}
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.42, delay: index * 0.06, ease: [0.25, 0.4, 0.25, 1] }}
+              direction={index % 2 === 0 ? "left" : "right"}
+              className="h-full"
+            >
+            <motion.article
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="group relative overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark p-6 md:p-7 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
             >
@@ -62,6 +63,7 @@ export default function ServicesGrid({ showHeading = true }: ServicesGridProps) 
                 <span className="h-px w-10 bg-gradient-to-r from-accent to-coral transition-all duration-300 group-hover:w-16" aria-hidden="true" />
               </div>
             </motion.article>
+            </ScrollSideReveal>
           );
         })}
       </div>

@@ -6,6 +6,7 @@ import { Search, Star, Braces, Cpu, Compass, ArrowUpRight } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
 import ParallaxElement from "@/components/ParallaxElement";
+import ScrollSideReveal from "@/components/ScrollSideReveal";
 
 const categories = ["All", "C++", "AI", "Web Development", "Career", "Tips", "University"];
 
@@ -81,6 +82,7 @@ export default function Blog() {
         variant="blog"
       />
 
+      <ScrollSideReveal direction="right">
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-8 md:py-12" aria-label="Find articles">
         <div className="relative isolate overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark shadow-sm">
           <ParallaxElement className="pointer-events-none absolute inset-x-0 -inset-y-16 bg-card/75 dark:bg-card-dark/75" distance={64} />
@@ -123,15 +125,17 @@ export default function Blog() {
           </div>
         </div>
       </section>
+      </ScrollSideReveal>
 
       <section className="max-w-[1200px] mx-auto px-6 lg:px-10 pb-16 md:pb-24" aria-label="Articles">
         {featuredPost ? (
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
+            <ScrollSideReveal direction="left" className="md:col-span-8">
             <motion.article
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
-              className="relative flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[1.7rem] p-6 md:col-span-8 md:p-9"
+              className="relative flex min-h-[430px] flex-col justify-end overflow-hidden rounded-[1.7rem] p-6 md:p-9"
             >
               <ParallaxElement className={`pointer-events-none absolute -inset-x-8 -inset-y-28 bg-gradient-to-br ${featuredPost.art}`} distance={120} />
               <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:24px_24px]" aria-hidden="true" />
@@ -155,8 +159,10 @@ export default function Blog() {
                 </div>
               </div>
             </motion.article>
+            </ScrollSideReveal>
 
-            <div className="grid grid-cols-1 gap-4 md:col-span-4">
+            <ScrollSideReveal direction="right" className="md:col-span-4">
+            <div className="grid grid-cols-1 gap-4">
               {remainingPosts.map((post, index) => (
                 <motion.article
                   key={post.title}
@@ -177,12 +183,14 @@ export default function Blog() {
                 </motion.article>
               ))}
             </div>
+            </ScrollSideReveal>
 
             {activeCategory === "All" && !query.trim() && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 md:col-span-12">
               {filteredPosts.map((post, index) => {
                 const Icon = post.icon;
                 return (
+                  <ScrollSideReveal key={`detail-${post.title}`} direction={index % 2 === 0 ? "left" : "right"} className="h-full">
                   <motion.article
                     key={`detail-${post.title}`}
                     initial={false}
@@ -212,6 +220,7 @@ export default function Blog() {
                       </div>
                     </div>
                   </motion.article>
+                  </ScrollSideReveal>
                 );
               })}
               </div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ParallaxElement from "./ParallaxElement";
+import ScrollSideReveal from "./ScrollSideReveal";
 import styles from "./PageHeader.module.css";
 
 type PageVariant = "about" | "services" | "blog" | "course" | "contact";
@@ -23,7 +24,7 @@ export default function PageHeader({
   return (
     <section className={styles.header} aria-labelledby="page-heading">
       <div className={styles.layout} data-variant={variant}>
-        <div className={styles.copy}>
+        <ScrollSideReveal className={styles.copy} direction="left">
           <p className={styles.eyebrow}>
             <span className={styles.eyebrowDot} />
             {eyebrow}
@@ -35,9 +36,9 @@ export default function PageHeader({
             <ArrowRight size={13} aria-hidden="true" />
             <span aria-current="page">{currentPage}</span>
           </nav>
-        </div>
+        </ScrollSideReveal>
 
-        <div className={styles.visual} aria-hidden="true">
+        <ScrollSideReveal className={styles.visual} direction="right" ariaHidden>
           <ParallaxElement className="pointer-events-none absolute inset-0 grid place-items-center" distance={144}>
             <div className={styles.orbit} />
             <div className={styles.orbitInner} />
@@ -49,7 +50,7 @@ export default function PageHeader({
             <span className={styles.sphereDot} />
           </ParallaxElement>
           <span className={styles.visualMark}>BT&nbsp; / &nbsp;01</span>
-        </div>
+        </ScrollSideReveal>
       </div>
     </section>
   );

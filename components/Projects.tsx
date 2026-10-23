@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { GitBranch, ExternalLink, ArrowUpRight } from "lucide-react";
 import ParallaxElement from "./ParallaxElement";
+import ScrollSideReveal from "./ScrollSideReveal";
 
 const projects = [
   {
@@ -24,15 +25,6 @@ const projects = [
     shape: "rounded-[42%] rotate-45",
   },
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, delay: index * 0.08, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] },
-  }),
-};
 
 export default function Projects() {
   return (
@@ -63,15 +55,14 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
         {projects.map((project, index) => (
-          <motion.article
+          <ScrollSideReveal
             key={`${project.title}-${index}`}
-            custom={index}
-            variants={cardVariants}
-            initial={false}
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            direction={index % 2 === 0 ? "left" : "right"}
+            className="h-full"
+          >
+          <motion.article
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card dark:bg-card-dark shadow-sm hover:shadow-lg transition-shadow duration-300"
+            className="h-full overflow-hidden rounded-[1.5rem] border border-border dark:border-border-dark bg-card dark:bg-card-dark shadow-sm hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative h-[190px] overflow-hidden" aria-hidden="true">
               <ParallaxElement className={`pointer-events-none absolute inset-x-0 -inset-y-20 bg-gradient-to-br ${project.art}`} distance={120} />
@@ -111,6 +102,7 @@ export default function Projects() {
               </div>
             </div>
           </motion.article>
+          </ScrollSideReveal>
         ))}
       </div>
       <a

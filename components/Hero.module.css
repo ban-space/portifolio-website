@@ -136,7 +136,7 @@
   color: #e6edff;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  transform: rotate(2deg);
+  rotate: 2deg;
 }
 
 .devTopbar {
