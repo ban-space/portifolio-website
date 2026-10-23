@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Puzzle, Lightbulb, BookOpen, Sparkles } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 import PageHeader from "@/components/PageHeader";
@@ -50,6 +50,11 @@ const timeline = [
 ];
 
 export default function About() {
+  const reduceMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const portraitY = useTransform(scrollY, [0, 500], reduceMotion ? [0, 0] : [0, -15]);
+  const watermarkY = useTransform(scrollY, [0, 500], reduceMotion ? [0, 0] : [0, 30]);
+
   return (
     <PageTransition>
       <PageHeader eyebrow="About" title="About Me" currentPage="About" variant="about" />
@@ -61,6 +66,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            style={{ y: portraitY }}
             className="lg:col-span-5 relative"
           >
             <ParallaxElement className="pointer-events-none absolute -inset-5" distance={44}>
@@ -152,7 +158,9 @@ export default function About() {
       </section>
 
       <section className="max-w-[880px] mx-auto px-6 lg:px-10 py-10 md:py-20">
-        <SectionHeading title="My Journey" centered />
+        <motion.div style={{ y: watermarkY }}>
+          <SectionHeading title="My Journey" centered />
+        </motion.div>
         <div className="relative">
           <div className="absolute left-5 top-2 bottom-2 w-px -translate-x-1/2 bg-gradient-to-b from-coral via-accent/60 to-transparent dark:via-accent-dark/60" aria-hidden="true" />
           {timeline.map((item, index) => (

@@ -77,10 +77,32 @@
   will-change: transform;
 }
 
+.legacyParallaxGlow {
+  position: absolute;
+  z-index: 2;
+  top: -40px;
+  right: -200px;
+  width: min(800px, 84vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(49 87 245 / 14%) 0%, rgb(49 87 245 / 7%) 35%, transparent 72%);
+  filter: blur(40px);
+  pointer-events: none;
+  will-change: transform;
+}
+
 .artwork {
   object-fit: cover;
   object-position: 58% center;
   user-select: none;
+}
+
+.devLegacyLayer {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
 }
 
 .devWindow {

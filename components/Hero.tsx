@@ -32,10 +32,21 @@ const socialLinks = [
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  const { scrollY: pageScrollY } = useScroll();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
+  const legacyBackgroundY = useTransform(
+    pageScrollY,
+    [0, 500],
+    reduceMotion ? [0, 0] : [0, 150],
+  );
+  const legacyBadgeY = useTransform(
+    pageScrollY,
+    [0, 500],
+    reduceMotion ? [0, 0] : [0, -20],
+  );
 
   const pointerX = useSpring(useMotionValue(0), {
     stiffness: 72,
@@ -112,10 +123,17 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className={styles.devWindow}
-          style={{ y: codeLift }}
+          className={styles.legacyParallaxGlow}
+          style={{ y: legacyBackgroundY }}
+          aria-hidden="true"
+        />
+
+        <motion.div
+          className={styles.devLegacyLayer}
+          style={{ y: legacyBadgeY }}
           aria-hidden="true"
         >
+          <motion.div className={styles.devWindow} style={{ y: codeLift }}>
           <div className={styles.devTopbar}>
             <span className={styles.devDots}>
               <i />
@@ -150,6 +168,7 @@ export default function Hero() {
             <span><span className={styles.devPrompt}>›</span> pnpm dev</span>
             <span className={styles.devBranch}>main</span>
           </div>
+          </motion.div>
         </motion.div>
 
         <div className={styles.heroCopy}>
